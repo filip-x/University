@@ -1,0 +1,6 @@
+I:\Facultate\Programare Orientata pe Obiecte\OOP Test 2\x64\Debug\OOP Test 2.exe
+I:\Facultate\Programare Orientata pe Obiecte\OOP Test 2\x64\Debug\OOP Test 2.pdb
+I:\Facultate\Programare Orientata pe Obiecte\OOP Test 2 Filip\x64\Debug\OOP Test 2.exe
+I:\Facultate\Programare Orientata pe Obiecte\OOP Test 2 Filip\x64\Debug\OOP Test 2.pdb
+D:\Facultate\Anul1Sem2\OOP\Test2OOP\OOP Test 2 Filip\x64\Debug\OOP Test 2.exe
+D:\Facultate\Anul1Sem2\OOP\Test2OOP\OOP Test 2 Filip\x64\Debug\OOP Test 2.pdb

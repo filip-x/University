@@ -1,0 +1,53 @@
+     1                                  bits 32 
+     2                                  
+     3                                  
+     4                                  global start        
+     5                                  
+     6                                  
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll           
+     9                                  import exit msvcrt.dll  ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern printf
+    11                                  extern scanf, exit 
+    12                                  
+    13                                  extern schimbare_baza
+    14                                  
+    15                                  
+    16                                  segment data use32 class=data
+    17 00000000 256400                      format_string db "%d",0
+    18 00000003 577269746520746865-         format_citire db "Write the number you want to convert:",0
+    18 0000000C 206E756D6265722079-
+    18 00000015 6F752077616E742074-
+    18 0000001E 6F20636F6E76657274-
+    18 00000027 3A00               
+    19                                      
+    20 00000029 0000                        nr dw 0 ; nu rezervam spatiu pentru mai multe asa ca folosim doar dw 
+    21                                      
+    22                                      
+    23                                      
+    24                                      
+    25                                      
+    26                                  segment code use32 class=code
+    27                                      start:
+    28 00000000 BB[03000000]                    mov ebx,format_citire
+    29 00000005 875B06                          xchg ebx,[ebx+6]
+    30 00000008 68[03000000]                    push dword format_citire ;we print what is in ""
+    31 0000000D FF15[00000000]                  call[printf]
+    32 00000013 83C404                          add esp, 4*1
+    33                                          
+    34 00000016 68[29000000]                    push nr ; the var where the number will  be put 
+    35 0000001B 68[00000000]                    push dword format_string ; the format 
+    36 00000020 FF15[00000000]                  call[scanf]
+    37 00000026 83C408                          add esp, 4*2
+    38 00000029 FF35[29000000]                  push dword[nr]; we need the value of nr not the address
+    39 0000002F E8(00000000)                    call schimbare_baza
+    40                                         
+    41                                          
+    42                                          
+    43                                          
+    44                                          
+    45                                          
+    46                                      
+    47                                          
+    48 00000034 6A00                            push    dword 0      
+    49 00000036 FF15[00000000]                  call    [exit]       

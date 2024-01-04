@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PermutationsOfNThreads/PermutationsOfNThreads.iml" filepath="$PROJECT_DIR$/PermutationsOfNThreads/PermutationsOfNThreads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primes/Primes.iml" filepath="$PROJECT_DIR$/Primes/Primes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProductOfTwoBigNumbersThreads/ProductOfTwoBigNumbersThreads.iml" filepath="$PROJECT_DIR$/ProductOfTwoBigNumbersThreads/ProductOfTwoBigNumbersThreads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProductOfTwoMatricesThreads/ProductOfTwoMatricesThreads.iml" filepath="$PROJECT_DIR$/ProductOfTwoMatricesThreads/ProductOfTwoMatricesThreads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScalarProductOfVectorsThreads/ScalarProductOfVectorsThreads.iml" filepath="$PROJECT_DIR$/ScalarProductOfVectorsThreads/ScalarProductOfVectorsThreads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/threaduri.iml" filepath="$PROJECT_DIR$/.idea/threaduri.iml" />
+    </modules>
+  </component>
+</project>

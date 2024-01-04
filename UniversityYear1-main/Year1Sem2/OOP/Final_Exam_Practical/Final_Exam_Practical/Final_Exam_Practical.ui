@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Final_Exam_PracticalClass</class>
+ <widget class="QMainWindow" name="Final_Exam_PracticalClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>360</width>
+    <height>530</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Final_Exam_Practical</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTableView" name="List1"/>
+      </item>
+      <item>
+       <widget class="QListWidget" name="List2"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLineEdit" name="label_search"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="search_button">
+          <property name="text">
+           <string>Search</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1">
+     <layout class="QFormLayout" name="formLayout">
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <item row="4" column="0">
+       <widget class="QLineEdit" name="lable_diameter"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLineEdit" name="lable_dec"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLineEdit" name="lable_ra"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLineEdit" name="lable_constelation"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLineEdit" name="lable_name"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="name">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="constelation">
+        <property name="text">
+         <string>Constelation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="ra">
+        <property name="text">
+         <string>Ra</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="dec">
+        <property name="text">
+         <string>Dec</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLabel" name="diameter">
+        <property name="text">
+         <string>Diameter</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="add_button">
+      <property name="text">
+       <string>ADD</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="Final_Exam_Practical.qrc"/>
+ </resources>
+ <connections/>
+</ui>

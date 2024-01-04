@@ -1,0 +1,18 @@
+ 
+ a.)
+
+ subst(l1...ln,v,i)
+    {}, n=0 //when the list is empty
+    v,l2,...,ln, ik=1 //when the subs must be done in first place (if i is = 1)
+    L1 U subs(l2...ln,v,i-1), when i>1 // when the subs must be done in the list at the i-th place 
+
+b.)
+
+diff ( a1,...an; b1,...bm)
+    {}, n=0, m=0 // both lists are empty
+    {}, n=0, m>0 //the first list is empty
+    {a1,...an}, n>0 and m=0 // when the 2nd list is empty
+
+    when n>0 and m>0
+    A1 U diff(a2,...an,b1,....bm) if a1 is not in b
+    and diff(a2...,an,b1...bm) when a1 is in b

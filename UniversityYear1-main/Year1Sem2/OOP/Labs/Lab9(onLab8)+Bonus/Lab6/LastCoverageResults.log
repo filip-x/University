@@ -1,0 +1,21 @@
+[2020-04-16 08:33:16] [info] Start Program:
+Path:"D:\\Facultate\\Anul1Sem2\\OOP\\Labs\\Lab9(onLab7)\\x64\\Debug\\Lab6.exe"
+Arguments:
+Working directory: "D:\\Facultate\\Anul1Sem2\\OOP\\Labs\\Lab9(onLab7)\\Lab6\\"
+Modules: Selected: D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\x64\Debug\Lab6.exe Excluded: 
+Sources: Selected: D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\Lab6 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Users\Pc\AppData\Local\Temp\t1dpxokq.kys 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2020-04-16 08:33:16] [info] Module: D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\x64\Debug\Lab6.exe is selected because it matches selected pattern: D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\x64\Debug\Lab6.exe
+[2020-04-16 08:33:16] [info] ----------------------------------------------------
+[2020-04-16 08:33:16] [info] Coverage binary generated in file: C:\Users\Pc\AppData\Local\Temp\t1dpxokq.kys
+[2020-04-16 08:33:16] [info] ----------------------------------------------------

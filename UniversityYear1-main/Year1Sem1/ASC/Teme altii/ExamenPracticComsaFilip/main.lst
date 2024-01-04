@@ -1,0 +1,116 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start
+     4                                  
+     5                                  extern exit, printf, scanf, fopen, fread, fclose
+     6                                  import exit msvcrt.dll
+     7                                  import printf msvcrt.dll
+     8                                  import scanf msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  
+    13                                  segment data use32 class=data
+    14                                  	; ...
+    15 00000000 FFFFFFFF                    n dd -1
+    16 00000004 00                          index db 0
+    17 00000005 <res 00000064>              file_name resb 100
+    18 00000069 7200                        access_mode db "r", 0
+    19 0000006B 6E756D652066697369-         format_afisare1 db "nume fisier: ", 0
+    19 00000074 65723A2000         
+    20 00000079 6E3A2000                    format_afisare2 db "n: ", 0
+    21 0000007D 257300                      format_citire_fisier db "%s", 0
+    22 00000080 256400                      format_citire_numar db "%d", 0
+    23 00000083 25730A00                    format_afisare_cuvant db "%s", 10, 0
+    24 00000087 <res 00000064>              cuvant resb 100
+    25 000000EB FFFFFFFF                    file_descriptor dd -1
+    26                                  segment code use32 class=code
+    27                                  	start:
+    28                                      	; ...
+    29                                          ; citim datele fisierul si numarul de la tastatura 
+    30 00000000 68[6B000000]                    push format_afisare1
+    31 00000005 FF15[00000000]                  call [printf]
+    32 0000000B 83C404                          add esp, 4 * 1
+    33                                  
+    34 0000000E 68[05000000]                    push file_name
+    35 00000013 68[7D000000]                    push format_citire_fisier
+    36 00000018 FF15[00000000]                  call [scanf]
+    37 0000001E 83C408                          add esp, 4 * 2
+    38                                  
+    39 00000021 68[79000000]                    push format_afisare2
+    40 00000026 FF15[00000000]                  call [printf]
+    41 0000002C 83C404                          add esp, 4 * 1
+    42                                  
+    43 0000002F 68[00000000]                    push n
+    44 00000034 68[80000000]                    push format_citire_numar
+    45 00000039 FF15[00000000]                  call [scanf]
+    46 0000003F 83C408                          add esp, 4 * 2
+    47                                          ; ----------
+    48                                  
+    49                                          ;deschidem fisierul
+    50 00000042 68[69000000]                    push dword access_mode     
+    51 00000047 68[05000000]                    push dword file_name
+    52 0000004C FF15[00000000]                  call [fopen]
+    53 00000052 83C408                          add esp, 4 * 2 
+    54                                  
+    55 00000055 A3[EB000000]                    mov [file_descriptor], eax
+    56                                  
+    57 0000005A 83F800                          cmp eax, 0 ; inchidem programul daca nu a fost deschis corect fisierul
+    58 0000005D 0F8485000000                    je final
+    59                                  
+    60                                          ; cu esi mergem mai departe pe sir in timp ce cuvant preia cuvantul actual pentru al afisa daca este cazul 
+    61                                          repeta2:
+    62 00000063 BE[87000000]                        mov esi, cuvant
+    63                                              ; citim litera cu litera cuvantul
+    64                                              repeta1:
+    65                                                  ; citim un caracter
+    66 00000068 FF35[EB000000]                          push dword [file_descriptor]
+    67 0000006E 6A01                                    push dword 1
+    68 00000070 6A01                                    push dword 1
+    69 00000072 56                                      push dword esi
+    70 00000073 FF15[00000000]                          call [fread]
+    71 00000079 83C410                                  add esp, 4*4
+    72 0000007C 46                                      inc esi
+    73                                                  ;daca jungem la final de fisier 
+    74 0000007D 83F800                                  cmp eax, 0
+    75 00000080 7408                                    je final_repeta1
+    76                                                  
+    77                                                  ; daca am ajuns la finalul cuvantului (adica la spatiu)
+    78                                                  ; iesim din repetitiva pentru a verifica cuvantul si al catelea e 
+    79 00000082 807EFF20                                cmp byte [esi-1], 32
+    80 00000086 7402                                    je final_repeta1
+    81                                                  
+    82 00000088 EBDE                                    jmp repeta1
+    83                                                  
+    84                                              final_repeta1: 
+    85 0000008A 803D[87000000]00                    cmp byte [cuvant], 0 ; verificam daca cuvantul e gol 
+    86 00000091 7444                                je final_repeta2
+    87                                  
+    88 00000093 C646FF00                            mov byte [esi - 1], 0; cum citim si spatiul, trebuie sa scapam de el
+    89                                              ;verificam daca cuvantul actual este  pe o pozitie multimpla de numarul introdus de la tastatura 
+    90 00000097 B800000000                          mov eax, 0
+    91 0000009C BA00000000                          mov edx, 0
+    92 000000A1 A0[04000000]                        mov al, [index]
+    93 000000A6 8B1D[00000000]                      mov ebx, [n]
+    94 000000AC 66F7F3                              div bx
+    95 000000AF 6683FA00                            cmp dx, 0
+    96 000000B3 7413                                je skipPrint
+    97                                              ;daca nu e atunci sarim peste print si mergem mai departe cu citirea 
+    98 000000B5 68[87000000]                        push cuvant
+    99 000000BA 68[83000000]                        push format_afisare_cuvant
+   100 000000BF FF15[00000000]                      call [printf]
+   101 000000C5 83C404                              add esp, 4 * 1
+   102                                  
+   103                                              skipPrint:
+   104 000000C8 C605[87000000]00                    mov byte [cuvant], 0
+   105 000000CF FE05[04000000]                      inc byte [index]
+   106 000000D5 EB8C                                jmp repeta2
+   107                                          final_repeta2:
+   108                                          
+   109                                          ;inchidem fisierul 
+   110 000000D7 FF35[EB000000]                  push dword [file_descriptor]
+   111 000000DD FF15[00000000]                  call [fclose]
+   112 000000E3 83C404                          add esp, 4
+   113 000000E6 6A00                            push dword 0
+   114                                          final: 
+   115 000000E8 FF15[00000000]                  call [exit]

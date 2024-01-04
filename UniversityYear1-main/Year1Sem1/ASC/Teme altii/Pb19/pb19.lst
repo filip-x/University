@@ -1,0 +1,121 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern printf
+    11                                  import printf msvcrt.dll
+    12                                  extern fopen
+    13                                  import fopen msvcrt.dll
+    14                                  extern fclose
+    15                                  import fclose msvcrt.dll
+    16                                  extern fscanf
+    17                                  import fscanf msvcrt.dll
+    18                                  ; our data is declared here (the variables needed by our program)
+    19                                  segment data use32 class=data
+    20                                      ; ...
+    21                                  
+    22 00000000 6E756D6572652E7478-         filename db "numere.txt",0;
+    22 00000009 7400               
+    23 0000000B 7200                        access db "r",0;
+    24                                      
+    25 0000000D 00000000                    nr_temporar dd 0;
+    26                                      
+    27 00000011 FFFFFFFF                    descriptor dd -1;
+    28                                      
+    29 00000015 <res 00000FA0>              p resd 1000; maxim 1000 de numere intra aici 
+    30 00000FB5 0000                        len_p dw 0
+    31 00000FB7 <res 00000FA0>              n resd 1000; maxim 1000 de numere intra aici 
+    32 00001F57 0000                        len_n dw 0
+    33                                   
+    34 00001F59 256400                      format_numar db "%d",0
+    35 00001F5C 25642000                    format_afisare db "%d ",0
+    36                                  
+    37                                  ; our code starts here
+    38                                  segment code use32 class=code
+    39                                      start:
+    40                                          ; ...
+    41                                          
+    42                                          ;open
+    43 00000000 68[0B000000]                    push dword access;
+    44 00000005 68[00000000]                    push dword filename;
+    45 0000000A FF15[00000000]                  call [fopen];
+    46 00000010 83C408                          add esp,4*2;
+    47                                         
+    48                                          ;check file
+    49 00000013 83F800                          cmp eax,0;
+    50 00000016 0F84B2000000                    je final
+    51 0000001C A3[11000000]                    mov [descriptor],eax;
+    52                                          
+    53 00000021 BE[15000000]                    mov esi,p;
+    54 00000026 BF[B70F0000]                    mov edi,n;
+    55                                          for_1:
+    56                                              ; 
+    57 0000002B 68[0D000000]                        push dword nr_temporar
+    58 00000030 68[591F0000]                        push dword format_numar
+    59 00000035 FF35[11000000]                      push dword [descriptor]
+    60 0000003B FF15[00000000]                      call [fscanf]
+    61 00000041 83C40C                              add esp,4*3
+    62                                             
+    63 00000044 83F8FF                              cmp eax,-1; 
+    64 00000047 7426                                je close
+    65                                              
+    66 00000049 A1[0D000000]                        mov eax,[nr_temporar]
+    67 0000004E 83F800                              cmp eax,0;
+    68 00000051 7F0E                                jg pozitiv
+    69                                              ; daca ii negativ
+    70 00000053 8907                                mov [edi],eax;
+    71 00000055 83C704                              add edi,4;
+    72 00000058 66FF05[571F0000]                    inc word[len_n];
+    73 0000005F EB0C                                jmp fin1
+    74                                              ;daca ii pozitiv
+    75                                              pozitiv:
+    76 00000061 8906                                mov [esi],eax;
+    77 00000063 83C604                              add esi,4;
+    78 00000066 66FF05[B50F0000]                    inc word[len_p]
+    79                                              fin1:
+    80                                              
+    81 0000006D EBBC                            jmp for_1   
+    82                                              
+    83                                          ;close file
+    84                                          close:
+    85 0000006F FF35[11000000]                  push dword [descriptor];
+    86 00000075 FF15[00000000]                  call [fclose]
+    87 0000007B 83C404                          add esp,4; 
+    88                                   
+    89 0000007E B900000000                      mov ecx,0
+    90 00000083 BE[15000000]                    mov esi,p;
+    91 00000088 BF[B70F0000]                    mov edi,n;
+    92 0000008D 668B0D[B50F0000]                mov cx,[len_p]
+    93                                          for_2:
+    94                                          ;afisre pe ecran
+    95 00000094 51                              push ecx
+    96 00000095 FF36                            push dword [esi]
+    97 00000097 68[5C1F0000]                    push dword format_afisare
+    98 0000009C FF15[00000000]                  call [printf]
+    99 000000A2 83C408                          add esp,4*2;
+   100 000000A5 83C604                          add esi,4
+   101 000000A8 59                              pop ecx
+   102 000000A9 E2E9                            loop for_2
+   103                                          
+   104 000000AB B900000000                      mov ecx,0
+   105 000000B0 668B0D[571F0000]                mov cx,[len_n]
+   106                                          for_3:
+   107                                          ;afisre pe ecran
+   108 000000B7 51                              push ecx
+   109 000000B8 FF37                            push dword [edi]
+   110 000000BA 68[5C1F0000]                    push dword format_afisare
+   111 000000BF FF15[00000000]                  call [printf]
+   112 000000C5 83C408                          add esp,4*2;
+   113 000000C8 83C704                          add edi,4
+   114 000000CB 59                              pop ecx
+   115 000000CC E2E9                            loop for_3
+   116                                      
+   117                                          final:
+   118                                          ; exit(0)
+   119 000000CE 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   120 000000D0 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

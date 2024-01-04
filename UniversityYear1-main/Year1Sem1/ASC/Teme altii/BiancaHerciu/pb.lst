@@ -1,0 +1,42 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14 00000000 0400FEFF05000800FD-             array dw 4,-2,5,8,-3,7,1,0;
+    14 00000009 FF070001000000     
+    15                                  ; our code starts here
+    16                                  segment code use32 class=code
+    17                                      start:
+    18                                          ; ...
+    19                                        
+    20 00000000 B901000000                    mov ecx,1;
+    21 00000005 BE02000000                    mov esi,2;
+    22 0000000A 668B86[00000000]              mov ax,[array+esi];
+    23 00000011 668B9E[04000000]              mov bx,[array+esi+4]
+    24 00000018 6683F803                      cmp ax,3;
+    25 0000001C 730D                          jae L2
+    26 0000001E 6683FB04                      cmp bx,4;
+    27 00000022 7202                          jb L1
+    28 00000024 EB0B                          jmp L3
+    29                                        L1:
+    30 00000026 B904000000                    mov ecx,4;
+    31                                        L2:
+    32 0000002B 66BA0500                      mov dx,5;
+    33 0000002F EB04                          jmp L4
+    34                                        L3:
+    35 00000031 66BA0600                      mov dx,6;
+    36                                        L4:
+    37                                        
+    38                                          ; exit(0)
+    39                                          
+    40 00000035 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    41 00000037 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

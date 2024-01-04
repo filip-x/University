@@ -1,0 +1,51 @@
+     1                                  bits 32 
+     2                                  segment code use32 public code
+     3                                  global numere_prime
+     4                                  
+     5                                  import printf msvcrt.dll
+     6                                  import scanf msvcrt.dll
+     7                                  extern printf
+     8                                  extern scanf
+     9                                  
+    10                                  segment data2 use32 class=data
+    11                                  
+    12 00000000 0300                        d dw 3
+    13                                         
+    14                                  numere_prime:
+    15                                      ; afisare numere prime si verificare 
+    16 00000002 668B4C2404                  mov cx,[esp+4]
+    17                                      
+    18 00000007 6683F901                    cmp cx,1
+    19 0000000B 744E                        je return_false
+    20 0000000D 6683F902                    cmp cx,2
+    21 00000011 7441                        je return_true
+    22                                      
+    23 00000013 66BB0200                    mov bx,2
+    24 00000017 66BA0000                    mov dx,0
+    25 0000001B 6689C8                      mov ax,cx
+    26 0000001E 66F7F3                      div bx
+    27 00000021 6683FA00                    cmp dx,0
+    28 00000025 7434                        je return_false
+    29                                      
+    30 00000027 6689C3                      mov bx,ax ; aici avem deja jumatatea de numar
+    31                                      
+    32                                      while:
+    33                                      ;conditia ca sa iasa din while
+    34 0000002A 6689C8                          mov ax,cx
+    35 0000002D 668B15[00000000]                mov dx,[d]
+    36 00000034 66F7F2                          div dx
+    37 00000037 6683FA00                        cmp dx,0
+    38 0000003B 741E                            je return_false
+    39 0000003D 66FF05[00000000]                inc word[d]
+    40 00000044 66FF05[00000000]                inc word[d]
+    41 0000004B 66391D[00000000]                cmp [d],bx
+    42 00000052 72D6                            jnae while 
+    43                                      return_true:
+    44 00000054 B801000000                      mov eax,1
+    45 00000059 EB05                            jmp final
+    46                                      return_false:
+    47 0000005B B800000000                      mov eax,0
+    48                                      final:
+    49 00000060 C20400                      ret 4
+    50                                      
+    51                                      

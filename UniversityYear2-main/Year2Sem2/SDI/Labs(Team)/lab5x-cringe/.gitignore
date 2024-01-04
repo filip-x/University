@@ -1,0 +1,7 @@
+.gradle/
+build/
+.idea/
+gradle/
+out/
+lab2-4/gradlew
+lab2-4/log

@@ -1,0 +1,85 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                                            extern fopen
+    12                                  import fopen msvcrt.dll
+    13                                  extern fclose
+    14                                  import fclose msvcrt.dll
+    15                                  extern fread
+    16                                  import fread msvcrt.dll
+    17                                  extern fread
+    18                                  import fread msvcrt.dll
+    19                                  extern fprintf
+    20                                  import fprintf msvcrt.dll
+    21                                  extern scanf
+    22                                  import scanf msvcrt.dll
+    23                                  extern printf 
+    24                                  import printf msvcrt.dll
+    25                                  ; our data is declared here (the variables needed by our program)
+    26                                  segment data use32 class=data
+    27                                      ; ...
+    28                                  
+    29                                  
+    30                                  
+    31 00000000 <res 0000000F>          cuvant resb 15;
+    32 0000000F 437576616E743D2000          screen_msg db "Cuvant= ",0;
+    33                                      
+    34 00000018 257300                      format_cuvant db "%s",0;
+    35 0000001B 25642000                    format_afisare db "%d ",0;
+    36                                  ; our code starts here
+    37                                  segment code use32 class=code
+    38                                      count:
+    39 00000000 BB00000000                  mov ebx,0;
+    40 00000005 8B442404                         mov eax,[esp+4];
+    41 00000009 89C6                             mov esi,eax;
+    42                                           
+    43                                          for_2:
+    44 0000000B 8A06                                mov al,[esi]
+    45 0000000D 3C00                                cmp al,0;
+    46 0000000F 7404                                je forend
+    47 00000011 46                                  inc esi
+    48 00000012 43                                  inc ebx;
+    49                                              
+    50                                              
+    51 00000013 EBF6                            jmp for_2
+    52                                          forend:
+    53 00000015 53                              push dword ebx 
+    54 00000016 68[1B000000]                    push dword format_afisare
+    55 0000001B FF15[00000000]                  call [printf]
+    56 00000021 83C408                          add esp,4*2;
+    57                                         
+    58 00000024 C20400                          ret 4
+    59                                      start:
+    60                                          ; ...
+    61                                      
+    62                                      
+    63                                      for_1:
+    64 00000027 68[0F000000]                    push dword screen_msg;
+    65 0000002C FF15[00000000]                  call [printf];
+    66 00000032 83C404                          add esp,4*1;
+    67                                             
+    68 00000035 68[00000000]                    push dword cuvant;
+    69 0000003A 68[18000000]                    push dword format_cuvant;
+    70 0000003F FF15[00000000]                  call [scanf];
+    71 00000045 83C408                          add esp,4*2;
+    72                                          
+    73 00000048 B8[00000000]                    mov eax,cuvant;
+    74 0000004D 50                              push eax;
+    75 0000004E E8ADFFFFFF                      call count;
+    76                                          
+    77 00000053 B224                        mov dl,'$';
+    78 00000055 3A15[00000000]              cmp dl,[cuvant]
+    79 0000005B 75CA                        jne for_1;
+    80                                              
+    81                                    
+    82                                      
+    83                                          ; exit(0)
+    84 0000005D 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    85 0000005F FF15[00000000]                  call    [exit]       ; call exit to terminate the program

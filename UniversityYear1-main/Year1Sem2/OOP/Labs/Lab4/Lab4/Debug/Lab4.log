@@ -1,0 +1,4 @@
+﻿  main2.c
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab4\Lab4\main2.c(34,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : see declaration of 'scanf'
+  Lab4.vcxproj -> D:\Facultate\Anul1Sem2\OOP\Labs\Lab4\Debug\Lab4.exe

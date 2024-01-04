@@ -1,0 +1,36 @@
+
+    # Initializes the graph, with a number of vertices if provided
+    def __init__(self, nr_vertices=0):# nr_vertices=number vertices
+
+    # We validate if an edge between x and y exists
+    def valid_edge(self, x, y):
+
+    # Adds an edge: x and y are the vertices and price is the "cost" of the edge that is added 
+    def add_edge(self, x, y, price):
+
+    # Deletes the edge from x to y;
+    def delete_edge(self, x, y):
+    
+    # Inserts a vertex
+    def add_vertex(self, vertex):
+
+    # Deletes a vertex and all of the edges that are connected to it
+    def delete_vertex(self, vertex):
+
+    # returns the degree (count) of the edges that go in the vertex
+    def get_in_degree_of_vertex(self, vertex): 
+  
+    # returns the degree (count) of the edges that go out of the vertex
+    def get_out_degree_of_vertex(self, vertex): 
+
+    # returns a list of vertices that have an outbound edge from the vertex parameter
+    def get_out_vertices(self, vertex): 
+
+    # returns a list of vertices that have an inbound edge from the vertex parameter
+    def get_in_vertices(self, vertex):
+
+    # returns a list containing all the vertices
+    def get_vertices(self):  
+   
+    # change the "cost"/price
+    def price_change(self, x, y, new_price): 

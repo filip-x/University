@@ -1,0 +1,5 @@
+1-nonvaccinated-ill
+2-nonvaccinated-healthy
+3-vaccinated-healthy
+4-nonvaccinated-healthy
+5-nonvaccinated-healthy

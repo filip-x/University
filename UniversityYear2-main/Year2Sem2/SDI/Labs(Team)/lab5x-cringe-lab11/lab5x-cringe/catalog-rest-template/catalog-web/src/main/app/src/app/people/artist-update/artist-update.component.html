@@ -1,0 +1,16 @@
+<br>
+<form [formGroup]="artistForm" (ngSubmit)="update()">
+  <label for="name">
+    Name
+    <input id = "name" type="text" formControlName="artistName">
+  </label>
+  <div class = "error" *ngIf="artistName.errors?.required">
+    Name is required.
+  </div>
+  <div class = "error" *ngIf="artistName.errors?.minlength">
+    Name must be at least 3 characters long.
+  </div>
+  <br>
+  <button type="submit" [disabled]="!artistForm.valid" class = bottom>Update</button>
+  <button (click)="goBack()" class = "right bottom">Back</button>
+</form>

@@ -1,0 +1,39 @@
+<?php
+require 'dbConn.php';
+
+if(!$conn) {
+    echo "NOT OK";
+    die('Could not connect to database:' . mysqli_error($conn));
+}
+
+$sql="SELECT * FROM author;";
+$result = mysqli_query($conn,$sql);
+$arr=[];
+
+while($row=mysqli_fetch_array($result)) {
+    $docs=$row['documentlist'];
+    $docArr=explode(" ", $docs);
+    foreach ($docArr as $el){
+        array_push($arr, $el);
+    }
+}
+
+$counts = array_count_values($arr);
+arsort($counts);
+$list = array_keys($counts);
+
+//echo json_encode($list[0]);
+
+$statement = $conn->prepare("SELECT * FROM document WHERE name=?");
+$statement->bind_param("s", $list[0]);
+$statement->execute();
+$result = $statement->get_result();
+
+if($row = mysqli_fetch_array($result)){
+    $response=$row['id'] . " " . $row['name'] . " " . $row['contents'];
+    echo $response;
+}
+
+mysqli_close($conn);
+
+?>

@@ -1,0 +1,64 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                      
+    15 00000000 04000000080000000C-         sir_surs dd 4,8,12,16,20,24,28,32,36;
+    15 00000009 000000100000001400-
+    15 00000012 0000180000001C0000-
+    15 0000001B 002000000024000000 
+    16                                      len_sir equ ($-sir_surs)/4;
+    17 00000024 FFFFFFFF                    _f dd -1
+    18 00000028 00000000                    max1 dd 0;
+    19                                      
+    20 0000002C 00000000                    max2 dd 0;
+    21 00000030 FFFFFFFF                    _f2 dd -1
+    22 00000034 00                          v1 db 0;
+    23 00000035 00                          v2 db 0;
+    24 00000036 10000000                    var_16 dd 16;
+    25                                  
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ; ...
+    30 00000000 BE[00000000]                    mov esi,sir_surs;
+    31 00000005 B909000000                      mov ecx,len_sir; len of len sir  we mov it in ecx
+    32                                          
+    33                                          for_1:
+    34                                          
+    35 0000000A 8B1D[28000000]                  mov ebx,[max1];
+    36                                          
+    37 00000010 391E                            cmp [esi],ebx;
+    38 00000012 7625                            jna nu_maxim
+    39                                          
+    40 00000014 BA00000000                      mov edx,0;
+    41 00000019 8B06                            mov eax,[esi]
+    42 0000001B F73D[36000000]                  idiv dword [var_16]
+    43                                          
+    44 00000021 83FA00                          cmp edx,0;
+    45 00000024 7513                            jne nu_maxim;
+    46                                          
+    47 00000026 891D[2C000000]                  mov [max2],ebx
+    48 0000002C BB00000000                      mov ebx,0;
+    49 00000031 8B1E                            mov ebx,[esi]
+    50 00000033 891D[28000000]                  mov [max1],ebx;
+    51                                  
+    52                                          nu_maxim:
+    53 00000039 46                              inc esi;
+    54 0000003A 46                              inc esi 
+    55 0000003B 46                              inc esi
+    56 0000003C 46                              inc esi
+    57 0000003D E2CB                            loop for_1
+    58                                          
+    59                                          ; exit(0)
+    60 0000003F 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    61 00000041 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

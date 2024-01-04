@@ -1,0 +1,119 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  extern fopen
+    12                                  import fopen msvcrt.dll
+    13                                  extern fclose
+    14                                  import fclose msvcrt.dll
+    15                                  extern fread
+    16                                  import fread msvcrt.dll
+    17                                  extern printf
+    18                                  import printf msvcrt.dll
+    19                                  ; our data is declared here (the variables needed by our program)
+    20                                  segment data use32 class=data
+    21                                      ; ...
+    22                                      ;11
+    23                                      ;A text file is given. Read the content of the file, count the number of vowels and display the result on the screen. The name of text file is defined in the ;data segment.
+    24                                      
+    25 00000000 646174652E696E00            file_name db "date.in",0;
+    26 00000008 7200                        access_mode db "r",0;
+    27                                      
+    28 0000000A FFFFFFFF                    file_descriptor dd -1;
+    29 0000000E 00000000                    nr_char_read_from_file dd 0;
+    30                                      len equ 100
+    31 00000012 <res 00000064>              buffer resb len;
+    32                                      
+    33 00000076 6165696F7500                vocale db "aeiou",0;
+    34                                      len_sir_voclae equ $-vocale-1; bcs it takes 0 too and it will be 6 not 5 
+    35 0000007C FFFFFFFF                    _ dd -1;
+    36                                      
+    37 00000080 00000000                    nr_total_de_vocale dd 0;
+    38                                      
+    39 00000084 256400                      format_nr db "%d",0
+    40                                      
+    41                                  ; our code starts here
+    42                                  segment code use32 class=code
+    43                                      start:
+    44                                          ; ...
+    45                                          ;open file
+    46 00000000 68[08000000]                    push dword access_mode;
+    47 00000005 68[00000000]                    push dword file_name;
+    48 0000000A FF15[00000000]                  call [fopen];
+    49 00000010 83C408                          add esp,4*2;
+    50                                         
+    51                                          ;check if file opened correctly
+    52 00000013 83F800                          cmp eax,0;
+    53 00000016 747A                            je final
+    54 00000018 A3[0A000000]                    mov [file_descriptor],eax;
+    55                                         
+    56                                         
+    57                                          bucla:
+    58                                              ; read from file 100 char
+    59 0000001D FF35[0A000000]                      push dword [file_descriptor]
+    60 00000023 6A64                                push dword len
+    61 00000025 6A01                                push dword 1;
+    62 00000027 68[12000000]                        push dword buffer;
+    63 0000002C FF15[00000000]                      call [fread]
+    64 00000032 83C410                              add esp,4*4
+    65                                             
+    66 00000035 83F800                              cmp eax,0; if eax is 0 then we are at the end of the file
+    67 00000038 7435                                je cleanup
+    68                                             
+    69 0000003A A3[0E000000]                        mov [nr_char_read_from_file],eax; nr of chars read from file
+    70                                             
+    71 0000003F 8B0D[0E000000]                      mov ecx,[nr_char_read_from_file]; 
+    72 00000045 BE[12000000]                        mov esi,buffer; elem din fisier in esi;
+    73                                            
+    74                                             
+    75                                              for_1:; initial array
+    76 0000004A BF[76000000]                            mov edi,vocale; elem din vocale in edi;
+    77                                                  
+    78 0000004F 51                                      push ecx;
+    79 00000050 B905000000                              mov ecx,len_sir_voclae;
+    80                                                  for_2:; we go on the vocale array and see if we get a match 
+    81 00000055 8A06                                        mov al,[esi];
+    82 00000057 3A07                                        cmp al,[edi]
+    83 00000059 7409                                        je vocala
+    84                                                      
+    85 0000005B 47                                          inc edi;
+    86 0000005C E2F7                                    loop for_2
+    87 0000005E 59                                  pop ecx;
+    88 0000005F 46                                  inc esi;daca nu gasete vocala merge mai departe 
+    89 00000060 E2E8                                loop for_1
+    90                                      
+    91 00000062 EBB9                            jmp bucla;
+    92                                              
+    93                                          
+    94                                     
+    95                                          ;daca ii vocala
+    96                                          vocala:
+    97 00000064 FF05[80000000]                  inc dword [nr_total_de_vocale];
+    98 0000006A 46                              inc esi; pentru ca nu mai ajunge la final in for_1
+    99 0000006B 59                              pop ecx; aducem inapoi ecx sirului mare 
+   100 0000006C 49                              dec ecx; pentru ca nu mai ajunge la final in for_1
+   101 0000006D EBDB                            jmp for_1;
+   102                                          
+   103                                          ; close file
+   104                                          cleanup:
+   105 0000006F FF35[0A000000]                  push dword [file_descriptor];
+   106 00000075 FF15[00000000]                  call [fclose]
+   107 0000007B 83C404                          add esp,4;
+   108                                          
+   109                                          
+   110                                          ;afisre pe ecran
+   111 0000007E FF35[80000000]                  push dword [nr_total_de_vocale]
+   112 00000084 68[84000000]                    push dword format_nr
+   113 00000089 FF15[00000000]                  call [printf]
+   114 0000008F 83C408                          add esp,4*2;
+   115                                          
+   116                                          final:
+   117                                          ; exit(0)
+   118 00000092 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   119 00000094 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

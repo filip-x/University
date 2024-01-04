@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-size: calc(var(--unit) * 2);
+  line-height: calc(var(--unit) * 2);;
+}
+
+h1 {
+  font-size: calc(var(--unit) * 3);
+}
+
+h2 {
+  font-size: calc(var(--unit) * 2.8);
+}
+:root {
+  --unit: min(1vh, 1vw);
+}

@@ -1,0 +1,4 @@
+I:\Facultate\Data Structures and Algorithms\Lab 6 Filip\Debug\Lab 6 Filip.exe
+I:\Facultate\Data Structures and Algorithms\Lab 6 Filip\Debug\Lab 6 Filip.pdb
+D:\Facultate\Anul1Sem2\Data Structure and Algorithms\Lab6\Lab 6 Filip\Debug\Lab 6 Filip.exe
+D:\Facultate\Anul1Sem2\Data Structure and Algorithms\Lab6\Lab 6 Filip\Debug\Lab 6 Filip.pdb

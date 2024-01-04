@@ -1,0 +1,112 @@
+     1                                  bits 32 
+     2                                  
+     3                                  
+     4                                  global start        
+     5                                  
+     6                                  
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import scanf msvcrt.dll
+    10                                  import printf msvcrt.dll
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fscanf msvcrt.dll
+    14                                  import fwrite msvcrt.dll
+    15                                  import fread msvcrt.dll
+    16                                  extern scanf 
+    17                                  extern printf 
+    18                                  extern fopen
+    19                                  extern fclose
+    20                                  extern fscanf
+    21                                  extern fwrite
+    22                                  extern fread
+    23                                                          
+    24                                  
+    25                                  ; our data is declared here (the variables needed by our program)
+    26                                  segment data use32 class=data
+    27                                      ; ...
+    28 00000000 7200                        file_acces db "r",0
+    29 00000002 7700                        file_acces2 db "w",0
+    30 00000004 00000000                    file_descriptor dd 0
+    31 00000008 00000000                    file_descriptor2 dd 0
+    32 0000000C 70726F626C656D615F-         fisier_nume db "problema_fisier_invers.txt",0
+    32 00000015 6669736965725F696E-
+    32 0000001E 766572732E74787400 
+    33 00000027 7072696E745F666973-         fisier_print db "print_fisier.txt",0
+    33 00000030 6965722E74787400   
+    34                                      len equ 100 
+    35 00000038 <res 00000064>              sirul resb 100
+    36                                  ; our code starts here
+    37                                  segment code use32 class=code
+    38                                      start:
+    39 00000000 68[00000000]                    push dword file_acces
+    40 00000005 68[0C000000]                    push dword fisier_nume
+    41 0000000A FF15[00000000]                  call [fopen]
+    42 00000010 83C408                          add esp,4*2
+    43                                          
+    44 00000013 A3[04000000]                    mov [file_descriptor],eax
+    45 00000018 83F800                          cmp eax,0
+    46 0000001B 746C                            je final
+    47                                          
+    48 0000001D 68[02000000]                    push dword file_acces2
+    49 00000022 68[27000000]                    push dword fisier_print
+    50 00000027 FF15[00000000]                  call [fopen]
+    51 0000002D 83C408                          add esp,4*2
+    52                                          
+    53 00000030 A3[08000000]                    mov [file_descriptor2],eax
+    54 00000035 83F800                          cmp eax,0
+    55 00000038 744F                            je final2
+    56                                          
+    57 0000003A FF35[04000000]                  push  dword [file_descriptor]
+    58 00000040 6A64                            push  dword len
+    59 00000042 6A01                            push  dword 1
+    60 00000044 68[38000000]                    push  dword sirul
+    61 00000049 FF15[00000000]                  call  [fread]
+    62 0000004F 83C410                          add esp,4*4
+    63                                          
+    64 00000052 89C1                            mov ecx,eax
+    65 00000054 BE[38000000]                    mov esi,sirul
+    66                                          repeta:
+    67 00000059 BB00000000                          mov ebx,0
+    68 0000005E 8A1E                                mov bl,[esi]
+    69 00000060 53                                  push ebx
+    70 00000061 46                                  inc esi
+    71 00000062 E2F5                                loop repeta
+    72 00000064 89C1                            mov ecx,eax
+    73 00000066 BE[38000000]                    mov esi,sirul
+    74                                          repeta2:
+    75 0000006B 5B                                  pop ebx
+    76 0000006C 881E                                mov [esi],bl
+    77 0000006E 46                                  inc esi
+    78 0000006F E2FA                                loop repeta2
+    79                                              
+    80 00000071 FF35[08000000]                  push dword [file_descriptor2]
+    81 00000077 6A64                            push dword len
+    82 00000079 6A01                            push dword 1
+    83 0000007B 68[38000000]                    push dword sirul
+    84 00000080 FF15[00000000]                  call [fwrite]
+    85 00000086 83C410                          add esp,4*4
+    86                                          
+    87                                          
+    88                                          
+    89                                          
+    90                                         
+    91                                          
+    92                                          
+    93                                          
+    94                                          
+    95                                          
+    96                                          
+    97                                          
+    98                                          
+    99                                       
+   100                                          
+   101                                          final:
+   102                                          final2:
+   103                                          
+   104                                          
+   105                                          
+   106                                          
+   107                                          ; exit(0)
+   108 00000089 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   109 0000008B FF15[00000000]                  call    [exit]       ; call exit to terminate the program

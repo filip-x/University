@@ -1,0 +1,32 @@
+Locatia noastra: PWD
+E este in jurul nostru: LS
+Change dir: CD
+Calea absoluta: de la / pana unde suntem
+Calea relativa: (depinde de locatia noastra curenta) calea pe care trebuie sa o parcurgi ca sa ajungi de unde esti, la unde vrei
+.. directorul parintelui( cel din fata lui, la parintele lui)
+. directorul curent
+MKDIR cu permisiunea de a face un diretor( si sa nu existe un director cu numele ala )
+TOUCH 
+RM-R (delete) (r- the path and the last thing to delet)
+CP ( copy)
+MV (move)
+====================
+VIM (i- insert)
+:WQ fisier nume
+:Q! fara a scrie nimic in el
+CAT fisier nume	
+NANO
+JOE ctrl KH
+gcc- Wall -g-o nume fisier fisier sursa (... .c)
+man	
+...|...
+
+
+
+ps report a snapshot of the current processes
+cut remove sections from each line of files
+sort sort lines of test files
+uniq qreport or omit repeated lines
+
+
+

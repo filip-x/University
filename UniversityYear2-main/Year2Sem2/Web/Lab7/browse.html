@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Browse</title>
+</head>
+<body>
+<style>
+    body footer{
+        text-align: center;
+    }
+    body footer a{
+        text-decoration: none;
+        color: blanchedalmond;
+    }
+
+    #browse {
+        width: 90%;
+        margin-left: 5%;
+        font-size: 20px;
+    }
+    #browse .cell-content {
+        overflow-y: auto;
+        padding-left: 5px;
+        font-family: Calibri, sans-serif;
+    }
+    #browse th {
+        font-family: "Calibri Light", sans-serif;
+    }
+    #browse th, #browse td {
+        border: 1px solid #0a3c67;
+    }
+
+    #page-navigation {
+        position: absolute;
+        bottom: 10px;
+        width: 90%;
+        left: 5%;
+        font-size: 20px;
+    }
+    #page-navigation div {
+        display: inline-block;
+    }
+
+    #prev-button {
+        float: left;
+        cursor: pointer;
+    }
+    #next-button {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+    }
+    #filtering {
+        display: flex;
+        flex-direction: row;
+    }
+
+</style>
+<img src="util/book-backround-index.jpg" alt= "Backround">
+<div id="form-section">
+    <h1>Menu Books - Browse</h1>
+    <div id="main-menu">
+        <div id="filtering">
+            <div id = "authorselection">
+                <label for = "AuthorSelect">Author: </label>
+                <select id = "AuthorSelect" name = "Author" onchange = "updateAuthor(this.value)">
+                    <option value="">Select a Author</option>
+                </select>
+            </div>
+            <div id = "titleselection">
+                <label for = "TitleSelect">Title: </label>
+                <select id = "TitleSelect" name = "Title" onchange = "updateTitle(this.value)">
+                    <option value="">Select a Title</option>
+                </select>
+            </div>
+            <button onclick="loadTable()">Search</button>
+        </div>
+
+        <table id = "browse">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Comment</th>
+                <th>Date</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr style = "display: none">
+                <td><div class = "cell-content">test</div></td>
+                <td><div class = "cell-content">test</div></td>
+                <td><div class = "cell-content">test</div></td>
+                <td><div class = "cell-content">test</div></td>
+                <td><div class = "cell-content">test</div></td>
+            </tr>
+            </tbody>
+
+        </table>
+        <nav id = "page-navigation">
+            <div id = "prev-button" onclick = "goToPreviousPage()">Previous Page</div>
+
+            <div id = "next-button" onclick = "goToNextPage()">Next Page</div>
+
+        </nav>
+        <footer>
+            <a href ="index.html"> Return to prev menu</a>
+        </footer>
+    </div>
+</div>
+
+<script>
+    let settings = {
+        page: -1,
+        pageCount: -1,
+        author: "",
+        title: ""
+    }
+    document.getElementById("prev-button").style.setProperty("display", "none");
+    document.getElementById("next-button").style.setProperty("display", "none");
+
+    function loadAuthor() {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                let authorList = JSON.parse(this.responseText);
+                let selectNode = document.getElementById("AuthorSelect");
+                for (let Author of authorList) {
+                    let authorOptionNode = document.createElement("option");
+                    authorOptionNode.value = Author;
+                    authorOptionNode.text = Author;
+                    selectNode.appendChild(authorOptionNode);
+                }
+            }
+        };
+        xmlHttp.open("GET", "../server.php?action=getAuthor", true);
+        xmlHttp.send();
+    }
+
+    function loadTitle() {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                let titleList = JSON.parse(this.responseText);
+                let selectNode = document.getElementById("TitleSelect");
+                for (let Title of titleList) {
+                    let authorOptionNode = document.createElement("option");
+                    authorOptionNode.value = Title;
+                    authorOptionNode.text = Title;
+                    selectNode.appendChild(authorOptionNode);
+                }
+            }
+        };
+        xmlHttp.open("GET", "../server.php?action=getTitle", true);
+        xmlHttp.send();
+    }
+    function updateAuthor(AuthorName) {
+        settings.author = AuthorName;
+    }
+
+    function updateTitle(TitleName) {
+        settings.title = TitleName;
+    }
+
+    function loadTable(page = 1) {
+        let AuthorName = settings.author
+        let TitleName = settings.title
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                let tableNode = document.getElementById("browse").getElementsByTagName("tbody")[0];
+                while (tableNode.firstChild) {
+                    tableNode.removeChild(tableNode.firstChild)
+                }
+                let booksInfo = JSON.parse(this.responseText);
+                console.log(booksInfo)
+                let booksList = booksInfo["page_content"];
+                console.log(this.responseText);
+
+                settings.page = page;
+                settings.pageCount = booksInfo["page_count"];
+
+                document.getElementById("prev-button").style.setProperty("display", "none");
+                document.getElementById("next-button").style.setProperty("display", "none");
+                if (settings.pageCount > 0 && settings.page < settings.pageCount + 1) {
+                    document.getElementById("next-button").style.setProperty("display", "inline-block");
+                }
+                if (settings.page > 1) {
+                    document.getElementById("prev-button").style.setProperty("display", "inline-block");
+                }
+                for (let booksArray of booksList) {
+                    let tableRow = document.createElement("tr");
+                    for (let booksCell of booksArray) {
+                        let tableCell = document.createElement("td");
+                        let cellContent = document.createElement("div");
+                        cellContent.className = "cell-content";
+                        cellContent.innerText = booksCell
+                        tableCell.appendChild(cellContent);
+                        tableRow.appendChild(tableCell);
+                    }
+                    tableNode.appendChild(tableRow);
+                }
+            }
+        };
+        xmlHttp.open("GET", `../server.php?action=loadBrowse&Author=${AuthorName}&Title=${TitleName}&pageSize=3&page=${page}`, true);
+        xmlHttp.send();
+    }
+
+    function goToPreviousPage() {
+        if (settings.page > 1) {
+            loadTable(settings.page - 1);
+        }
+    }
+
+    function goToNextPage() {
+        if (settings.page < settings.pageCount + 1) {
+            loadTable(settings.page + 1);
+        }
+    }
+
+    loadAuthor();
+    loadTitle();
+</script>
+</body>
+</html>

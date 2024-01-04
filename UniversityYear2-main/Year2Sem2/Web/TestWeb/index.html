@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="jquery-2.0.3.js"></script>
+
+</head>
+<body>
+    <label for="username">User</label>
+    <input type = "text" id = "username">
+    <button id="buttonuser" type="button" onclick="useradd()">Next</button>
+</body>
+</html>
+
+<script>
+    function useradd()
+    {
+
+    
+    var username =document.getElementById("username").value;
+    alert( username);
+    $.post("../server.php",{action:'login',username: username},
+    function(data)
+    {
+        alert(data);
+        if(data =="OK")
+        {
+            window.location.href ="main.html";
+
+        }
+        else{
+            location.reload();
+        }
+    }
+    );
+}
+</script>

@@ -1,0 +1,119 @@
+Uniformed search strategies(USS)
+-Not based on problem-specific info; blind strategies; brute force methods
+	Linear search
+	BFS
+	DFS-inorder,preoder,postorder
+	...
+
+Informedsearch strategies (ISS)
+-Global search: 
+	Greedy best-first search: 
+		Minimisation of the cost from the current state of the final state
+		Search time < USS
+		Incomplete( not  optimal)
+	A*+ versionsof A*:
+		Minimisation of the cost from the inital state to the current state -g(n) and of the cost from the current state to the final state -h(n)
+		Avoid to re-visit a state
+		Without supra-estimation of (h)
+		Large time and space complexity -> depends on used heuristic
+		Complete( optimal)
+
+-Local search strategies:
+	Tabu search-Best un-visited Neighbour, Neighbour is better than current state, Global optima(quickly)
+	Hill climbing - Best Neighbour,Acc criteria: Neighbour is better than state, Local or global optima
+	Simulated annealing: Random Neighbour, Neighbour is better than current state or neighbour is weaker than current state (prababilistic acceptance), Global optima(slowly)
+
+Local search strategies(LSS)
+-Simple 
+	Hill climbing - selects the best neighbour
+	Simulated annealing - selects probabilistic the best neighbour
+	Tabu search - retains the list of visited solutions
+-Beam 
+	Evolutionary algorithms
+	Partice swarm optimisation
+	Ant colony optimisation
+
+Population model: 
+	Generational EA:
+		Each generation creates miu(u) offspring
+		Each individual survives a generation only
+		Set of parent is totally replaced by set of offspring
+	Steady-state EA:
+		Each generation creates a single offspring
+		A single parent (the worst one) is replaced by the offspring
+Arithmetic crossover:
+	Typology:
+		Singular arithmetic crossover
+		Simple arithmetic crossover
+		Complete arithmetic crossover
+Multiple recombination:
+	Based on the value's frequencies from parents ( general uniform XO)
+	Based on segmentation and crossover (gereral XO with diagonal cutting points)
+	Based on numberic operations that are specific to real values(XO based on gravity center, general arithmetic XO)
+
+Search aspects: discovering promising regions in the search space( acumulating useful info about the problem)
+Recombination: performs a large jump into a region somewhere between the regions associated to parents
+Mutation: performs small random diversions, reamaining in a neighbourhood of parent 
+
+PSO: 
+	Beam local search 
+	Possible solutions- particles that have:
+		A position in the search space
+		A velocity
+	Cooperative and perturbative search based on:
+		Position of the best particle of the swarm
+		Best position of particle( particle has memory)
+ACO:
+	Beam local search
+	Possible solutions- ants that have
+		Memory - retain steps of solution constrution
+		Smell - take decision based on pheromones deposited by the other ants(social, collective, collaborative behaviour)
+	Cooperative and constructive search
+
+Games Definition:
+	Initial state(how the elements are initially located)
+	Possible actions (allowed moves)
+	Final test (when a game ends)
+	Utility functions (who wins and what is the profit)
+Solving strategy for games:
+	Based on (almost) complete exploration of the search tree
+		AndOr-> who wins
+		MinMax-> who wins and what is its profit
+		MinMax with alfa and beta pruning-> who wins and what is its profit and what moves do not deserve to be performed
+Based on intelligent strategies:
+	Symmetry
+	Pairs
+	Parity
+	Dynamic programming
+	A* (Path-finding, Planning)
+
+Forward Chaining(FC)
+	FC should be used when:
+		All or most of the data is given in the prolem statement
+		There exists a large number of potential goals but only a few of them are achievable in a particular problem instance
+		It is difficult to formulate a goal or hypothesis
+Backward Chaining(BC)
+	BC should be used when
+		A goal r hypothesis is given in the problem statement or can be easily formulated
+		There are a large number of rules that match the facts, producing a large number of conclusions - choosing a goal prunes the search space
+		Problem data are not given(or easily available)
+KBS:
+	Computational systems that
+	Overlap KB and IE
+Types of KBS:
+	LBS:
+		Explore knowledge by using methods of formal logic
+		Components
+			Language(syntax and semantic) and Deduction metho ( reasoning)
+	RBS:
+		Explore knowledge by using methods of huamn logic
+		Can solve problems that do now have a deterministic solution
+		Try to simulate a human expert
+		Components:
+			KB-> facts and rules
+			IE-> forward and backward chaining
+
+
+
+
+

@@ -1,0 +1,48 @@
+a) Write a function to return the product of two vectors.
+b) Write a function to return the depth of a list. Example: the depth of a linear list is 1.
+c) Write a function to sort a linear list without keeping the double values.
+d) Write a function to return the intersection of two sets.
+
+dot_product(I,I)
+a.)dot_product(a1...an,b1...bn) 
+0, if n=0
+a1*b1+dot_product(a2..an,b2..bn) otherwise
+
+ depth(I)
+b.)depth(a1...an)
+0,if n=0
+depth(a2...an),if a1 is not list(it's just an element)
+max(1+depth(a1),depth(a2...an)),if a1 is a list
+
+get_min(I,I)
+c.)get_min(a1...an,nr)
+9999,if n=0
+min(a1,get_min(a2..an,nr), if a1 > nr
+get_min(a2..an,nr) if a1 <= nr 
+
+sort(I,I)
+
+sort(a1...an,last_nr)
+[],if n=0 or get_min(a1...an,last_nr) == last_nr
+get_min(a1...an,last_nr) U sort(a1...an,get_min(a1...an,last_nr)), get_min(a1...an,last_nr) != last_nr
+
+is_in_set(I,I)
+
+d.)is_in_set(a1...an,nr)
+True, a1 = nr;
+False, n =0;
+is_in_set(a2...an,nr);
+
+intersect(I,I)
+
+intersect(a1...an,b1...bm)
+[], if n=0
+[], if m=0
+intersect(a2...an,b1...bm), if a1 not in b
+a1 U intersect(a2...an,b1...bm), if a1 is in b
+
+
+
+
+
+

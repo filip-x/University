@@ -1,0 +1,47 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                      ;(a+d+d)-c+(b+b)= (1+4+4)-3+(2+2)=9-3+4=11=B    9-3+254= 260  fe =
+    15 00000000 01                          a db 1
+    16 00000001 0200                        b dw 2
+    17 00000003 03000000                    c dd 3 
+    18 00000007 0400000000000000            d dq 4 
+    19                                  
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          ; ...
+    24 00000000 8B15[07000000]                 mov edx,[d]  ;here we put the first part of the dq
+    25 00000006 8B0D[0B000000]                 mov ecx, [d+4] ;here we put the second part of the dq
+    26 0000000C B800000000                     mov eax, 0 ;we make eax all 0 
+    27 00000011 A0[00000000]                   mov al, [a] ; we move a into al 
+    28 00000016 01D2                           add edx, edx ; we add d+d 
+    29 00000018 11C9                           adc ecx, ecx ;same here
+    30 0000001A 01C2                           add edx,eax ; we add the dd with a 
+    31 0000001C 83D100                         adc ecx, 0   ;if we have a carry we  put it in  
+    32 0000001F BB00000000                     mov ebx, 0
+    33 00000024 A1[03000000]                   mov eax, [c] ; we put c into eax
+    34 00000029 29C2                           sub edx, eax ; we substract c from d ( c is in eax)
+    35 0000002B 83D900                         sbb ecx, 0 ; if there is a carry we will put it 
+    36 0000002E BB00000000                     mov ebx, 0 ; after we substract c in ebx we make it 0 so that we can add b+be
+    37 00000033 668B1D[01000000]               mov bx, [b] ; we move b into bx 
+    38 0000003A 6601DB                         add bx,bx  ; we add b to b 
+    39 0000003D 01DA                           add edx, ebx ;we add d to b
+    40 0000003F 83D100                         adc ecx, 0   ;we add the carry 
+    41                                         
+    42                                         
+    43                                         
+    44                                         
+    45                                          ; exit(0)
+    46 00000042 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    47 00000044 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

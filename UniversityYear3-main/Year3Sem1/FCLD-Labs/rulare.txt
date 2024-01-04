@@ -1,0 +1,44 @@
+fisier lex/yacc:
+impartit in 4 parti, separate prin %
+prima parte: declarari c
+a doua parte: specificatii
+a treia parte: tokens
+a patra parte: cod c main
+
+add piff-avem un  sir numit pif si tot insereszi in el token-uri folosind pfi  cursor pentru a marca pozitia
+pfi cursor creste sa mearga pe pozitia urmatoare
+punem egal tot folosind pif  cursor
+si folosim varibabila position pentru pentru symbol table
+
+addST: verificam sa nu avem deja token-ul
+ deschidem fisierul si adaugam in paralel si in lista si in fisier( token-ul) 
+itoa: tranformama un numar intr-un string
+
+comenzi:
+1. flex fisier ex. flex my_specif.lxi
+	iti creeaza un fisier lex.yy.c
+2. gcc lex.yy.c -o run.exe
+3. run.exe fisier_exemplu => run.exe example.gram
+
+bison / yacc
+impartit la fel
+dar in loc de tokens ai reguli de productie de la grammars
+se ruleaza cu 
+1. lex fisier.lxi
+2. bison -dy fisier.y
+3. gcc lex.yy.c y.tab.c -o run.exe
+4. run.exe fisier 
+
+bison foloseste fisierul lex \
+
+
+De tinut minte:
+	Lex/flex: flex pt windows si lex ii in general 
+		Lex iti token(ezeaza) un fisier adica ia element cu element si le afiseaza alaturi de tipul de token( idetifier, keyword, constanta sau separator)
+		Imi creaza si pif-ul si symbol table 
+		(pif-modul de a formata token-urile gasite si marcheaza unde se afla in symbol table ( token, id )) 
+		(symbol table contine constante si variabile )
+	Yacc/Bison - bison pt windows yacc in general
+		yacc se foloseste de rezultatul lui Lex pentru a parsa fisierul conform regulirlor de productie specificate( reguli de productie- 
+		yacc e impoartit la fel ca si lex ( din pct de vedre a codului)
+		la  yacc avem pe langa tokens si reguli de productie.

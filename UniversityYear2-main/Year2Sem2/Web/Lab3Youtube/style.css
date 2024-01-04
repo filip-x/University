@@ -1,0 +1,232 @@
+
+body{
+    margin: 0;
+    background-color: #181818;
+}
+#container
+{
+    z-index: 10;
+    position: fixed;
+    background-color: rgb(32 32 32);
+    width: 100%;
+    height: 56px ;
+}
+
+#menu-icon
+{
+    margin-left: 18px;
+    margin-top: 15px;
+    position:fixed;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+#youtube-icon
+{
+    margin-left: 18px;
+    margin-top: 15px;
+    position:fixed;
+    left: 40px;
+    width: 80px;
+    height: 24px;
+    fill: white;
+}
+#search
+{
+    position: fixed;
+    top:10px;
+    left: calc(50% - 250px);
+
+}
+input{
+
+    width: 450px;
+    height: 30px;
+    background-color: #121212;
+}
+#tastatura
+{
+    top:15px;
+    right:10px;
+    position:  absolute;
+}
+#search-button
+{
+    position:fixed;
+    width: 60px;
+    height: 36px;
+    margin-left: 1px;
+    background-color:#313131;
+}
+#svg-search
+{
+    fill:#6f6f6f;
+}
+#svg-speak
+{
+    top: 15px;
+    right: 40%;
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+#video
+{
+    top: 15px;
+    right: 6%;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+#patrat-cu-patrate
+{
+    top: 15px;
+    right: 4%;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+#clopotel
+{
+    top: 15px;
+    right: 2%;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+#me
+{
+    border-radius: 50%;
+    top: 15px;
+    right: 15px;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+}
+#loc-liber{
+    height: 60px;
+}
+#container-vertical
+{
+
+    position: fixed;
+    background-color: rgb(32 32 32);
+    width: 56px;
+    height: 100% ;
+}
+#casa
+{
+    top:12%;
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+#foc
+{
+    top:1%;
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+#abonament
+{
+    top:15%;
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+#biblioteca
+{
+    top:18%;
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+.meniu-vertical
+{
+    margin-left: 10px;
+}
+.meniu-vertical span
+{
+    font-family: Arial, sans-serif;
+    position: relative;
+    bottom: 0;
+    color: white;
+    font-size: 8px;
+}
+#div-poze-rand{
+    width: 311px;
+    height: 269px;
+    padding: 100px;
+
+}
+.mainbody{
+    padding-left: 300px;
+    padding-right: 300px;
+    height: calc(100vh - 70px);
+    display: flex;
+}
+.poze
+{
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+}
+.videos {
+    height: 100%;
+    width: 100%;
+    padding: 15px 25px;
+}
+.videogrid
+{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.video{
+    width: calc(16% - 10px);
+}
+.thumbnail{
+    width: 100%;
+    height: 170px;
+
+}
+.author{
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+.minilogo{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.details{
+    display: flex;
+    padding-top: 5px;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    color:#aaaaaa;
+}
+a{
+    text-decoration: none;
+    color:#aaaaaa;
+}
+h3{
+    margin-top:0;
+    margin-bottom: 2px !important;
+    color:white;
+}
+

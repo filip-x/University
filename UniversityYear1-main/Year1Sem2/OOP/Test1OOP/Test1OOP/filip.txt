@@ -1,0 +1,2 @@
+Surgery | Hospital Name: abc | Nr of doctors:1 | Nr of patients: 2 | is_efficient: 0
+Neonatal Unit | Hospital Name: abc | Nr of doctors:1 Nr of mothers: 2 Nr of Newborn: 3 Average Grade: 9.000000 | is_efficient: 1

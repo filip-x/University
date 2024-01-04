@@ -1,0 +1,5 @@
+﻿  file_sql_repository.cpp
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab8)+Bonus\Lab6\file_sql_repository.cpp(12,20): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab8)+Bonus\Lab6\file_sql_repository.cpp(22,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab8)+Bonus\Lab6\file_sql_repository.cpp(202,8): warning C4101: 'stored_element': unreferenced local variable
+  Lab6.vcxproj -> D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab8)+Bonus\x64\Debug\Lab6.exe

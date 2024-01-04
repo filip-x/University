@@ -1,0 +1,98 @@
+
+
+body {
+    margin: 0;
+    font-size: 24px;
+}
+
+header {
+    height: 10%;
+    border-bottom: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+header span {
+    margin: 0 auto;
+}
+
+main {
+    position: relative;
+    height: 85%;
+}
+
+footer {
+    height: 5%;
+    background-color: aliceblue;
+}
+
+@font-face {
+    font-family: 'Times New Roman' , sans-serif;
+
+}
+
+@font-face {
+    font-family: 'Times New Roman', sans-serif;
+
+}
+
+#background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: -100;
+}
+
+#container {
+    position: relative;
+    height: 500px;
+    width: 500px;
+    margin: 20vh auto 0;
+    border: 3px solid #312577;
+    background-color: white;
+    font-family: 'Nexa Light', sans-serif;
+}
+
+#message-box {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: Calibri, sans-serif;
+    height: 300px;
+    width: 300px;
+    border: 3px solid #2793da;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 999;
+    background-color: #9abcdc;
+}
+
+#message-box span {
+    text-align: center;
+}
+
+#message-box button {
+    width: 30%;
+    height: 15%;
+    margin: 0 auto;
+    font-size: 25px;
+}
+
+.msg-show {
+    display: flex !important;
+}
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+footer a{
+    position: absolute;
+    right: 0;
+}

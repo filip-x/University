@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <title>Lab7</title>
+    <script src="jquery-2.0.3.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<br>
+<div style="margin-left: 25px; margin-top: 25px;">
+    <h1>Websites</h1>
+    <br>
+    <div>
+        <button id="button" type="button" onclick="showWebsites()"/>Get All Websites</button>
+        <div id="divA">
+            <b>Websites info will be listed here...</b>
+        </div>
+    </div>
+</div>
+<form style="margin-left: 25px; margin-top: 25px; width: 30%;" method="">
+    <div class="form-group">
+        <label >id:</label><br>
+        <input type="text" class="form-control" id="idU"><br>
+        <label >keyword1:</label><br>
+        <input type="text" class="form-control" id="keyword1U"><br>
+        <label >keyword2:</label><br>
+        <input type="text" class="form-control" id="keyword2U"><br>
+        <label >keyword3:</label><br>
+        <input type="text" class="form-control" id="keyword3U"><br>
+        <label >keyword4:</label><br>
+        <input type="text" class="form-control" id="keyword4U"><br>
+        <label >keyword5:</label><br>
+        <input type="text" class="form-control" id="keyword5U"><br>
+        <br>
+        <button id="updateSubmit" type="button" onclick="updateDocument();">Update</button>
+    </div>
+</form>
+<br>
+<form style="margin-left: 25px; margin-top: 25px; width: 30%;" method="">
+    <div class="form-group">
+        <label >keywords:</label><br>
+        <input type="text" class="form-control" id="keywords"><br>
+
+        <br>
+        <button id="keywordSubmit" type="button" onclick="searchDocuments();">Search</button>
+    </div>
+
+    <div id="divB">
+        <b>Documents info will be listed here...</b>
+    </div>
+</form>
+
+</body>
+</html>

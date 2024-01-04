@@ -1,0 +1,23 @@
+1.a
+is_in_set(nr,list)
+	-false, if list is empty
+	-true, if l1 == nr
+	-is_in_set(nr,l2....ln) otherwise
+
+remove_from_set(nr,list)
+	-[], if list is empty
+	-l2....ln ,if nr == l1
+	-l1 U remove_from_set(nr,l2....ln)otherwise
+	
+sets_are_equal(list1,list2)
+	-false, if is_in_set(l1,list2) == false
+	-true, if list1 is empty and list 2 is empty 
+	-false ,first is empty ands -2nd is not
+	-sets_are_equal(l2...ln,remove_from_set(l1,list2)),otherwise
+			-removes from list 1 and then we remove it from list 2 
+
+
+m_element(m,list)
+	-l1, if m == 1
+	-m_element(m-1,l2..ln)otherwise
+	-false, if n == 0 (m is not in list)

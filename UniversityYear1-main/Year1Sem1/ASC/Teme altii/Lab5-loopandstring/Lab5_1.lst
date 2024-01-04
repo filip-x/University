@@ -1,0 +1,66 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                  
+    15                                      ;S: 1, 2, 3,4
+    16                                      ;D: 2, 6, 12
+    17                                      
+    18 00000000 01020304                    s db 1,2,3,4;
+    19                                      len_s equ $-s;len of s 
+    20                                      
+    21 00000004 00<rept>                    d times len_s-1 db 0; we made d (the string whereto put)
+    22                                      len__d equ $-s-1;len of d
+    23                                      
+    24                                      
+    25                                      
+    26                                      
+    27                                      
+    28                                      
+    29                                  ; our code starts here
+    30                                  segment code use32 class=code
+    31                                      start:
+    32                                          ; ...
+    33 00000000 BE[00000000]                    mov esi,s; first element of s 
+    34 00000005 B903000000                      mov ecx,len_s-1; the len of s 
+    35 0000000A BF[04000000]                    mov edi,d; first element of d 
+    36                                          
+    37                                          for_loop1:
+    38                                          
+    39                                             
+    40 0000000F 8A06                                    mov al,[esi];
+    41 00000011 F66E01                                  imul byte[esi+1];
+    42 00000014 8807                                    mov byte[edi],al;
+    43 00000016 46                                      inc esi;
+    44 00000017 47                                      inc edi;
+    45                                                  
+    46                                                  
+    47                                                  
+    48                                              ;mai trebuie caz cand e la final de sir
+    49                                          
+    50 00000018 E2F5                            loop for_loop1
+    51                                          final:
+    52                                          
+    53                                          
+    54                                          
+    55                                          
+    56                                          
+    57                                          
+    58                                          
+    59                                          
+    60                                          
+    61                                          
+    62                                      
+    63                                          
+    64                                          ; exit(0)
+    65 0000001A 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    66 0000001C FF15[00000000]                  call    [exit]       ; call exit to terminate the program

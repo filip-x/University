@@ -1,0 +1,8 @@
+<ul class="artists">
+  <li *ngFor="let artist of artists"
+      [class.selected]="artist === selectedArtist"
+      (click)="onSelect(artist)">
+    {{artist.name}}
+  </li>
+</ul>
+<button (click)="goBack()" class = "right bottom" >Back</button>

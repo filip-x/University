@@ -1,0 +1,41 @@
+     1                                  bits 32                         
+     2                                  segment code use32 public code
+     3                                  global verificare
+     4                                  
+     5                                  verificare:
+     6 00000000 B800000000              	mov eax, 0; in eax o sa avem rezultatul final, 1 daca contine si 0 daca nu contine 
+     7 00000005 8B4C2404                	mov ecx, [esp + 4]; primul paramentru pus pe stiva paramentru este salvat in ecx -pt ca se iau invers ( rest_var)
+     8 00000009 8B5C2408                	mov ebx,[esp+8] ; o sa preluam al doilea parametru este salvat  in ebx ( first_var)
+     9                                  	repeta:; cu acest loop traversam rest_var si vedem daca il contine pe first_var 
+    10 0000000D 8A11                            mov dl,[ecx]; we transfer the value of the ecs to the register of edx
+    11 0000000F 3A13                            cmp dl,[ebx] ; we compare the register of edx with the value in ebx 
+    12 00000011 751B                            jne continue ; JNE= jump not equal  to edx letter with the first letter of ebx( first_var)
+    13 00000013 51                              push ecx ; pusham  adresa literei actuala pe care i-am dat-o lui edx 
+    14 00000014 53                              push ebx ; pusham adresa sirului first_var
+    15 00000015 41                              inc ecx
+    16 00000016 43                              inc ebx 
+    17                                          repeta2:
+    18 00000017 8A11                                mov dl,[ecx]; we transfer the value of the ecs to the register of edx
+    19 00000019 3A13                                cmp dl,[ebx] ; we compare the rest of the letters of the seq
+    20 0000001B 750F                                jne break ; cazul acesta este pentru cand am prima litera,dar restul nu,dar s-ar putea sa mai avem in restul cuvantului 
+    21 0000001D 41                                  inc ecx; next letter
+    22 0000001E 43                                  inc ebx ; next letter
+    23 0000001F B200                                mov dl,0
+    24 00000021 3A13                                cmp dl,[ebx] ; daca e Null atunci stim ca am asjuns la finalul primului cuvant
+    25 00000023 75F2                                jne repeta2 ;daca nu am ajuns la final repetam loop-ul
+    26 00000025 B801000000                          mov eax,1; am ajuns la final si exista
+    27 0000002A EB09                                jmp break2; in momentul in care am ajuns la final 
+    28                                              
+    29                                          break:
+    30 0000002C 5B                              pop ebx ; preluam variabilele de unde am ramas  
+    31 0000002D 59                              pop ecx ; acceasi chestie 
+    32                                          continue:
+    33                                          
+    34 0000002E 41                              inc ecx ; ca sa treaca la urmatoarea litera din cx
+    35 0000002F B200                            mov dl,0
+    36 00000031 3811                            cmp [ecx],dl ; (caracter null)
+    37 00000033 75D8                            jne repeta ; jne = jump not equal  repeta 
+    38                                      break2:
+    39                                          
+    40 00000035 C20800                  	ret 4 *2 ; in this case, 8 represents the number of bytes that need to be cleared from the stack (the parameter of the function)
+    41                                      ;avem 4*2 pentru ca avem 2 parametrii 

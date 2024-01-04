@@ -1,0 +1,73 @@
+#d{
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top:50%;
+    left: 50%;
+    z-index: 10;
+
+
+}
+#d1{
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    background: #14dc8c;
+    top:50%;
+    left: 50%;
+
+    transition: top 2s,left 2s,bottom 2s, right 2s;
+
+}
+#d2{
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    background: #385a94;
+    bottom:calc(50% - 100px);
+    left: 50%;
+    transition: top 2s,left 2s,bottom 2s, right 2s;
+
+}
+#d3{
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    background: #dc2b14;
+    top:50%;
+    right:calc(50% - 100px);
+    transition: top 2s,left 2s,bottom 2s, right 2s;
+
+}
+#d4{
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    background: #dcc114;
+    right:calc(50% - 100px);
+    bottom: calc(50% - 100px);
+    transition: top 2s,left 2s,bottom 2s, right 2s;
+
+}
+#d:hover+#d1{
+    top: 0;
+    left: 0;
+}
+#d:hover+#d1+#d2{
+    bottom: 0;
+    left: 0;
+    top:unset;
+}
+#d:hover+#d1+#d2+#d3{
+    top: 0;
+    right: 0;
+    left:unset;
+
+
+}
+#d:hover+#d1+#d2+#d3+#d4{
+    right: 0;
+    bottom: 0;
+    top:unset;
+    left: unset;
+}

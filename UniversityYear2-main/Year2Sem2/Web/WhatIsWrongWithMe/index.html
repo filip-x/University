@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+    <script src="jquery-2.0.3.js"></script>
+
+</head>
+<body>
+    <div id="form">
+        <h1>Movies</h1>
+        <form id = "add-form">
+            <div>
+                <label for="name">name</label>
+                <input type = "text" id = "name">
+                <br>
+                <label for ="contnet">Content</label>
+                <br>
+                <input type="text" id = "content">
+            </div>
+        </form>
+            
+            <button id="buttonadd" type="button" onclick="addDocuments()">Add Doc</button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+            <button id="keywordSubmit" type="button" onclick="showDocs();">Show</button>
+        </div>
+    
+        <div id="divB">
+            <b>Documents info will be listed here...</b>
+        </div>
+    </form>
+
+</body>
+</html>
+
+
+
+<script>
+
+function showDocs()
+{
+
+    $.get("../server.php?action=show",
+    function (data)
+    {
+        $('#divB').html(data);
+    });
+}
+
+function addDocuments()
+{
+    var name  = document.getElementById("name").value;
+    var content = document.getElementById("content").value;
+    alert(name+" "+content);
+    $.post("../server.php",{action:'add',name: name,content: content},
+    function(data)
+    {
+        alert(data);
+    }
+    );
+}
+</script>
+

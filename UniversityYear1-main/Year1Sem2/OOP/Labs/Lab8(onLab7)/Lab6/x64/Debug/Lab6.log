@@ -1,0 +1,7 @@
+﻿  ui.cpp
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\Lab6\ui.cpp(89,24): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\Lab6\ui.cpp(119,24): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\Lab6\ui.cpp(251,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\Lab6\ui.cpp(276,41): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\Lab6\ui.cpp(289,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Lab6.vcxproj -> D:\Facultate\Anul1Sem2\OOP\Labs\Lab9(onLab7)\x64\Debug\Lab6.exe

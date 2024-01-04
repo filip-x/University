@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c604ec10-f486-4625-b13d-7608764568a2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/InterfaceMyHeap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/InterfaceMyLatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/LatchTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/MyHeap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/HeapReading.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/ForkStatement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/HeapAllocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/HeapWriting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/WhileStatement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/type/ReferenceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/value/ReferenceValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/GuiMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/gui/ChooseProgram.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/gui/ChooseProgram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/gui/MainGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/gui/MyPair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/gui/RunProgram.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/gui/RunProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/Interpretor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/Interpretor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/log1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/log1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/log2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/log2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/log3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/log3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/dictionary/InterfaceMyDictionary.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/dictionary/InterfaceMyDictionary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/dictionary/MyDictionary.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/dictionary/MyDictionary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/ArithmeticExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/ArithmeticExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/InterfaceExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/InterfaceExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/LogicExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/LogicExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/RelationalExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/RelationalExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/ValueExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/ValueExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/VariableExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/expresion/VariableExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/list/InterfaceMyList.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/list/InterfaceMyList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/list/MyList.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/list/MyList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/programstate/ProgramState.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/programstate/ProgramState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/stack/InterfaceMyStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/stack/InterfaceMyStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/stack/MyStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/stack/MyStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/AssignmentStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/AssignmentStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/CloseReadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/CloseReadFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/CompoundStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/CompoundStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/IfStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/IfStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/InterfaceStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/InterfaceStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/NoOperationStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/NoOperationStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/OpenReadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/OpenReadFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/PrintStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/PrintStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/ReadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/ReadFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/VariableDeclarationStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/model/statement/VariableDeclarationStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/repository/InterfaceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/repository/InterfaceRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/repository/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/repository/Repository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/ExitCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/ExitCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/Interpreter.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/Interpreter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/RunExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/out/production/Interpretor/app/view/RunExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/InterfaceMyDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/InterfaceMyDictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/MyDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/dictionary/MyDictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/ArithmeticExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/ArithmeticExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/InterfaceExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/InterfaceExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/LogicExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/LogicExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/RelationalExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/RelationalExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/ValueExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/ValueExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/VariableExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/expresion/VariableExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/list/InterfaceMyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/list/InterfaceMyList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/list/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/list/MyList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/programstate/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/programstate/ProgramState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/stack/InterfaceMyStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/stack/InterfaceMyStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/stack/MyStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/stack/MyStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/AssignmentStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/AssignmentStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/CloseReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/CloseReadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/CompoundStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/CompoundStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/IfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/IfStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/InterfaceStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/InterfaceStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/NoOperationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/NoOperationStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/OpenReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/OpenReadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/PrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/PrintStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/ReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/ReadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/VariableDeclarationStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/model/statement/VariableDeclarationStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/repository/InterfaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/repository/InterfaceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/repository/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/view/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/view/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/ExitCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/view/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InterpretorV6/src/app/view/RunExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/InterpretorV6/src/app/view/RunExample.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/InterpretorV6" />
+  </component>
+  <component name="ProjectId" id="1mme3ua1VQCgJv8t6IFuXEjcYr8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Facultate an2\MAP\InterpretorV6 -EXAM PART2\InterpretorV6\src\app\model\dictionary" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="app.Main" />
+      <module name="InterpretorV6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c604ec10-f486-4625-b13d-7608764568a2" name="Default Changelist" comment="" />
+      <created>1610102999572</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610102999572</updated>
+      <workItem from="1610103001274" duration="96000" />
+      <workItem from="1611782921160" duration="177000" />
+      <workItem from="1611815447316" duration="16000" />
+      <workItem from="1611817187513" duration="1098000" />
+      <workItem from="1613500634081" duration="191000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="248" y="355" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611783061562">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="248" y="355" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1611783061562" />
+    <state x="4205" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1611817583129">
+      <screen x="3440" y="0" width="1920" height="1040" />
+    </state>
+    <state x="4205" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400/3440.0.1920.1040@3440.0.1920.1040" timestamp="1611817583129" />
+    <state x="523" y="502" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1611783057039">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="523" y="502" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1611783057039" />
+    <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1611815458078">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400/3440.0.1920.1040@0.0.3440.1400" timestamp="1611815458078" />
+    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1611782957475" />
+    <state width="1528" height="388" key="GridCell.Tab.0.bottom" timestamp="1611783097300">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1528" height="388" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1611783097300" />
+    <state width="1528" height="388" key="GridCell.Tab.0.center" timestamp="1611783097299">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1528" height="388" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1611783097299" />
+    <state width="1528" height="388" key="GridCell.Tab.0.left" timestamp="1611783097297">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1528" height="388" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1611783097297" />
+    <state width="1528" height="388" key="GridCell.Tab.0.right" timestamp="1611783097299">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1528" height="388" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1611783097299" />
+    <state x="274" y="274" key="SettingsEditor" timestamp="1611782961562">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="274" y="274" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1611782961562" />
+  </component>
+</project>

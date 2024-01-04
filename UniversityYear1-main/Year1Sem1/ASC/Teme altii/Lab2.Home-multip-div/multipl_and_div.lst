@@ -1,0 +1,113 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                  
+    15                                      
+    16 00000000 05                          a db 5
+    17 00000001 0B                          b db 11
+    18 00000002 08                          c db 8
+    19 00000003 6600                        d dw 102
+    20                                      ;1.) ((a+b-c)*2 + d-5)*d = (16-8)*2+97)*102= (16+97)*102=11.526
+    21                                      ;30.) [(a-b)*5+d]-2*c =  = (-6*5+102)-2*8= 72-16=56 
+    22 00000005 02                          doi db 2
+    23 00000006 05                          cinci db 5
+    24                                      
+    25                                      ;LAST PROBLEMS
+    26                                      
+    27 00000007 05                          a_a db 5
+    28 00000008 07                          b_b db 7
+    29 00000009 0A                          c_c db 10
+    30 0000000A 03                          d_d db 3
+    31 0000000B 6600                        e_e dw 102
+    32 0000000D 2E01                        f_f dw 302
+    33 0000000F 9201                        g_g dw 402
+    34 00000011 4001                        h_h dw 320
+    35                                      ;1. ((a-b)*4)/c = -8/10= 0 with rest -8
+    36                                      ;30.) 100/(e+h-3*a) = 100/(102+320-3*5)= 100/(422-15)=100/407= 0 and rest is 100
+    37 00000013 04                          patru db 4
+    38 00000014 03                          trei db 3
+    39 00000015 6400                        hund dw 100
+    40                                      
+    41                                  ; our code starts here
+    42                                  segment code use32 class=code
+    43                                      start:
+    44                                          ; ...
+    45 00000000 B800000000                      mov eax,0;
+    46 00000005 BB00000000                      mov ebx,0;
+    47 0000000A B900000000                      mov ecx,0;
+    48 0000000F BA00000000                      mov edx,0;
+    49                                          
+    50 00000014 A0[00000000]                    mov al,[a];
+    51 00000019 0205[01000000]                  add al,[b];
+    52 0000001F 2A05[02000000]                  sub al,[c];
+    53 00000025 F625[05000000]                  mul byte [doi];
+    54 0000002B 660305[03000000]                add ax,[d];
+    55 00000032 6683E805                        sub ax,5;
+    56 00000036 66F725[03000000]                mul word [d];
+    57                                          
+    58 0000003D B800000000                      mov eax,0;
+    59 00000042 BB00000000                      mov ebx,0;
+    60 00000047 B900000000                      mov ecx,0;
+    61 0000004C BA00000000                      mov edx,0;
+    62                                          
+    63 00000051 A0[00000000]                    mov al,[a];
+    64 00000056 2A05[01000000]                  sub al,[b];
+    65 0000005C F62D[06000000]                  imul byte [cinci];
+    66 00000062 660305[03000000]                add ax,[d];
+    67 00000069 6689C3                          mov bx,ax;
+    68 0000006C 66B80000                        mov ax,0;
+    69 00000070 B002                            mov al,2;
+    70 00000072 F625[02000000]                  mul byte[c];
+    71 00000078 6629C3                          sub bx,ax;
+    72                                          
+    73                                          ;##################
+    74                                          
+    75 0000007B B800000000                      mov eax,0;
+    76 00000080 BB00000000                      mov ebx,0;
+    77 00000085 B900000000                      mov ecx,0;
+    78 0000008A BA00000000                      mov edx,0;
+    79                                          
+    80 0000008F A0[07000000]                    mov al,[a_a];
+    81 00000094 2A05[08000000]                  sub al,[b_b];
+    82 0000009A F62D[13000000]                  imul byte [patru];
+    83 000000A0 F63D[09000000]                  idiv byte [c_c];
+    84                                          ; the result is 0 with rest -8 =>  in ah is -8 bcs of the rest and in al is 0
+    85                                          
+    86 000000A6 B800000000                      mov eax,0;
+    87 000000AB BB00000000                      mov ebx,0;
+    88 000000B0 B900000000                      mov ecx,0;
+    89 000000B5 BA00000000                      mov edx,0;
+    90                                          
+    91 000000BA A0[00000000]                    mov al,[a];
+    92 000000BF F625[14000000]                  mul byte [trei];
+    93 000000C5 668B1D[0B000000]                mov bx,[e_e];
+    94 000000CC 66031D[11000000]                add bx,[h_h];
+    95 000000D3 6629C3                          sub bx,ax;
+    96 000000D6 66B80000                        mov ax,0;
+    97 000000DA 66A1[15000000]                  mov ax,[hund]
+    98 000000E0 66F7F3                          div bx;
+    99                                          ; the result is stored in ax dx, ax=0 bcs 100/407 is 0 and the rest is 100 so it is stored in dx
+   100                                          
+   101                                          
+   102                                          
+   103                                          
+   104                                          
+   105                                          
+   106                                          
+   107                                          
+   108                                          
+   109                                          
+   110                                          
+   111                                          ; exit(0)
+   112 000000E3 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   113 000000E5 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

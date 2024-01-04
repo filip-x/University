@@ -1,0 +1,53 @@
+     1                                  bits 32 
+     2                                  segment code use32 public code
+     3                                  global schimbare_baza
+     4                                  
+     5                                  import printf msvcrt.dll
+     6                                  import scanf msvcrt.dll
+     7                                  extern printf
+     8                                  extern scanf
+     9                                  
+    10                                  segment data2 use32 class=data
+    11 00000000 426173653136203D20-         format_16 db "Base16 = %x",0
+    11 00000009 257800             
+    12 0000000C 4261736532203D2025-         format_2 db "Base2 = %s",0
+    12 00000015 7300               
+    13 00000017 0000                        save_number dw 0
+    14 00000019 <res 00000011>              nr_base2 resb 17
+    15                                         
+    16                                  schimbare_baza:
+    17                                      ; Schimbare in baza 16 si baza 2 
+    18 0000002A 8B4C2404                    mov ecx,[esp+4]
+    19 0000002E 66890D[17000000]            mov  [save_number], cx
+    20 00000035 51                          push dword ecx
+    21 00000036 68[00000000]                push dword format_16
+    22 0000003B FF15[00000000]              call [printf]
+    23 00000041 83C408                      add esp, 4*2
+    24                                      ; this was for base 16 
+    25 00000044 66A1[17000000]              mov ax, [save_number]
+    26 0000004A 66BA0000                    mov dx,0
+    27 0000004E B9[19000000]                mov ecx,nr_base2; aici avem indicele de la numarul in baza 2/ si se preia adresa
+    28                                      
+    29                                      repeat:
+    30 00000053 66BB0200                        mov bx,2
+    31 00000057 66F7F3                          div  bx
+    32 0000005A 8811                            mov [ecx] ,dl; ceea ce fac acum in ecx se tranfera in nr_base2 pentru ca au aceeasi adresa
+    33 0000005C 66BA0000                        mov dx,0
+    34 00000060 800130                          add byte [ecx],"0"
+    35 00000063 41                              inc ecx
+    36 00000064 66BB0000                        mov bx,0
+    37 00000068 6639C3                          cmp bx,ax
+    38 0000006B 75E6                            jne repeat; partea de dinainte se repeta si se repeta pana cand cmp  este egal 
+    39                                          
+    40 0000006D 68[19000000]                push dword nr_base2
+    41 00000072 68[0C000000]                push dword format_2
+    42 00000077 FF15[00000000]              call [printf]
+    43 0000007D 83C408                      add esp,4*2
+    44                                      
+    45                                              
+    46                                          
+    47                                      
+    48                                  
+    49 00000080 C20400                      ret 4
+    50                                      
+    51                                      

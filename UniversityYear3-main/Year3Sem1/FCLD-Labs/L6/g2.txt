@@ -1,0 +1,47 @@
+main_block cmpdstmt declstmt new_line assignst cmpexpression cmpcondition expression term identifier input output ifstmt condition stmt simplestmt stmtlist structstmt operation relation whilestmt
+main : { } var \n = ( ) Read << >> Write not if else + - * / % // while > < == != <= >=
+main_block
+main_block -> main, :, {, stmtlist,}
+cmpdstmt -> {,stmtlist,}
+declstmt -> var, identifier, new_line
+new_line -> \n
+assignst -> identifier, =, expression, new_line
+cmpexpression -> (,expression, )
+cmpcondition -> (, condition,)
+expression -> expression, operation, term
+expression -> term
+term -> const
+term -> identifier
+input -> Read, >>, identifier,new_line
+output -> Write,<< ,expression, new_line
+ifstmt -> if, not, condition, :,stmt
+ifstmt -> if, condition, :,stmt, else, :,stmtlist
+ifstmt -> if, condition, :, stmt
+ifstmt -> if, not, condition, :,stmt,else, :,stmtlist
+condition -> expression, relation, expression
+condition -> condition, logical_operator, condition
+stmt -> simpltstmt
+stmt -> structstmt
+simplestmt -> assignstmt
+simplestmt -> input
+simplestmt -> output
+simplestmt -> declstmt
+stmtlist -> stmt
+stmtlist -> stmt,stmtlist
+structstmt -> ifstmt
+structstmt -> whilestmt
+structstmt -> compstmt
+operation -> +
+operation -> -
+operation -> *
+operation -> /
+operation -> %
+operation -> //
+relation -> >
+relation -> <
+relation -> ==
+relation -> !=
+relation -> <=
+relation -> >=
+whilestmt -> while, [not], condition, : ,stmtlist
+whilestmt -> while, condition,  :, stmtlist

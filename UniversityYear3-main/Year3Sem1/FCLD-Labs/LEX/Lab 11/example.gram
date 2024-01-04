@@ -1,0 +1,7 @@
+Read >> A
+Read >> B
+while #B != 0:
+    R = A % B
+    A = B
+    B = R
+Write << B

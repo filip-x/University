@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<header>
+    <h1>Vacation Menu - Login or Sign Up </h1>
+</header>
+<main>
+    <form id="login-form">
+        <div>
+            <label for="_login_username">Username</label>
+            <input type="text" id="_login_username">
+            <label for="_login_password">Password</label>
+            <input type="password" id="_login_password">
+            <br />
+            <button type="button" class="submit-button" id="login">
+                Log in
+            </button>
+        </div>
+        <div style="flex-shrink: 0; width: 5%">
+            Or...
+        </div>
+        <div>
+            <label for="_signup_username">Username</label>
+            <input type="text" id="_signup_username">
+            <label for="_signup_password">Password</label>
+            <input type="password" id="_signup_password">
+            <br />
+            <button type="button" class="submit-button" id="signup">
+                Sign up
+            </button>
+        </div>
+        <span id="msg"></span>
+    </form>
+</main>
+
+
+<script>
+    $(document).ready(() => {
+        $('#signup').on('click', () => {
+            $.post('/Session/SignUp', {
+                username: $('#_signup_username').val(),
+                password: $('#_signup_password').val()
+            }, (data, status) => {
+                if (status === "success") {
+                    console.log(status);
+                    showMessage(data);
+                }
+            });
+        });
+
+        $('#login').on('click', () => {
+            $.post('/Session/UserLogIn',
+                {
+                    username: $('#_login_username').val(),
+                    password: $('#_login_password').val()
+                },
+                (data, status) => {
+                    if (status === "success") {
+                        var information = data.split('\n');
+                        showMessage(information[1]);
+                        console.log(information);
+                        if (parseInt(information[0]) === 0) {
+                            setTimeout(() => {
+                                    location.reload();
+                                },
+                                1000);
+                        }
+                    }
+                });
+        });
+    })
+
+</script>
+
+<style>
+    #container {
+        width:1000px;
+    }
+
+    body footer {
+        text-align: center;
+    }
+
+        body footer:hover {
+            font-style: oblique;
+        }
+
+        body footer a {
+            text-decoration: none;
+            color: cornflowerblue;
+        }
+
+    #login-form {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        font-size: calc(var(--size) * 0.04);
+        font-family: "Calibri Light", sans-serif;
+    }
+
+        #login-form input, #login-form textarea {
+            font-size: calc(var(--size) * 0.04);
+            font-family: "Courier New", sans-serif;
+            resize: none;
+        }
+
+    .submit-button {
+        font-size: calc(var(--size) * 0.04);
+        font-family: "Arial Black", sans-serif;
+        height: calc(var(--size) * 0.1);
+    }
+
+    #login-form div {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 35%;
+    }
+
+    #msg {
+        width: 100%;
+        text-align: center;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+</style>

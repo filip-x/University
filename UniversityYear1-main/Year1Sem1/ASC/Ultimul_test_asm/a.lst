@@ -1,0 +1,81 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  
+     6                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     7                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     8                                  import scanf msvcrt.dll
+     9                                  import printf msvcrt.dll
+    10                                  import fopen msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import fprintf msvcrt.dll ;word by word 
+    13                                  import fscanf msvcrt.dll ;word by  word 
+    14                                  import fwrite msvcrt.dll ;write a string
+    15                                  import fread msvcrt.dll ;takes sentance
+    16                                  
+    17                                  extern scanf
+    18                                  extern printf 
+    19                                  extern fopen
+    20                                  extern fclose
+    21                                  extern fscanf
+    22                                  extern fwrite
+    23                                  extern fread 
+    24                                  extern fprintf
+    25                                  extern secventa
+    26                                                          
+    27                                  
+    28                                  segment data use32 class=data
+    29                                  
+    30 00000000 <res 00000064>              sir_nr resb 100
+    31 00000064 43697465737465206E-         format_afisare_consola db "Citeste nr: ",0
+    31 0000006D 723A2000           
+    32 00000071 256400                      format_citire_nr db "%d",0
+    33 00000074 257800                      format_afisare_consola_nr db "%x",0
+    34 00000077 00                          nr db 0
+    35                                      
+    36                                  
+    37                                  segment code use32 class=code
+    38                                      start:
+    39 00000000 BE[00000000]                mov esi,sir_nr
+    40                                      while_1:
+    41 00000005 68[64000000]                push dword format_afisare_consola
+    42 0000000A FF15[00000000]              call [printf]
+    43 00000010 83C404                      add esp,4
+    44                                      
+    45 00000013 56                          push dword esi
+    46 00000014 68[71000000]                push dword format_citire_nr
+    47 00000019 FF15[00000000]              call [scanf]
+    48 0000001F 83C408                      add esp,4*2
+    49 00000022 46                          inc esi
+    50                                      
+    51                                      
+    52 00000023 B300                        mov bl,0
+    53 00000025 385EFF                      cmp [esi-1],bl
+    54 00000028 75DB                        jne while_1
+    55                                      
+    56 0000002A 68[00000000]                push dword sir_nr
+    57 0000002F E8(00000000)                call secventa
+    58                                      
+    59 00000034 BB00000000                  mov ebx,0
+    60                                      while_2:
+    61                                      ;afisare numere
+    62 00000039 8A18                        mov bl,[eax]
+    63 0000003B 60                          pusha
+    64 0000003C 53                          push dword ebx
+    65 0000003D 68[74000000]                push dword format_afisare_consola_nr
+    66 00000042 FF15[00000000]              call [printf]
+    67 00000048 83C408                      add esp,4*2
+    68 0000004B 61                          popa
+    69                                      
+    70 0000004C 40                          inc eax
+    71 0000004D 49                          dec ecx
+    72 0000004E 80F900                      cmp cl,0
+    73 00000051 75E6                        jne while_2
+    74                                       
+    75                                      
+    76                                      
+    77                                      
+    78                                          
+    79 00000053 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    80 00000055 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

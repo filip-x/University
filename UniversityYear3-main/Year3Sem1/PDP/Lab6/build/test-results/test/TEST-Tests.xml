@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-15T08:09:11" hostname="DESKTOP-M47MEF4" time="0.028">
+  <properties/>
+  <testcase name="test()" classname="Tests" time="0.028"/>
+  <system-out><![CDATA[0 4
+4 3
+3 9
+9 8
+8 5
+5 2
+2 1
+1 6
+6 7
+DirectedGraph(edges=[[4], [6], [1], [9], [3], [2], [7], [], [5], [8]], nodes=[0, 4, 3, 9, 8, 5, 2, 1, 6, 7])
+7 0
+6 8
+0 5
+7 7
+3 4
+0 8
+5 8
+0 6
+6 5
+0 1
+8 4
+3 5
+1 2
+[6, 2]
+[1, 6, 7, 0, 4, 3, 9, 8, 5, 2, 1]
+Single threaded: 0.0024659
+[1, 6, 7, 0, 4, 3, 9, 8, 5, 2, 1]
+Multi threaded: 0.0018191
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

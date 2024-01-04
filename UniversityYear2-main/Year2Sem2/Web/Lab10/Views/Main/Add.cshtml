@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<style>
+
+    body {
+        margin: 0;
+    }
+
+        body img {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: -100;
+            top: 0;
+        }
+
+
+        #container h1 {
+            text-align: center;
+            color: yellowgreen;
+            font-size: 40px;
+            margin: 0;
+        }
+
+    #main-menu {
+        width: 100%;
+        height: 100%;
+    }
+
+    body ul {
+        margin: 0;
+        padding-left: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+        body ul li:hover {
+            font-weight: 1000;
+        }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    body ul li {
+        flex-grow: 1;
+        padding-top: 40px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 35px;
+    }
+        body footer {
+            text-align: center;
+        }
+
+            body footer a {
+                text-decoration: none;
+                color: blanchedalmond;
+            }
+
+        #add-form {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            font-family: "Times New Roman", sans-serif;
+            font-size: 20px;
+        }
+
+            #add-form input, #add-form textarea {
+                font-size: 20px;
+                font-family: "Times New Roman", sans-serif;
+                resize: none;
+            }
+
+        #_add-submit {
+            font-size: 20px;
+            font-family: "Times New Roman", sans-serif;
+        }
+
+        #add-form div {
+            position: relative;
+            justify-content: space-evenly;
+            width: 65%;
+        }
+    </style>
+        <h1>Menu Books - Add</h1>
+        <div id="main-menu">
+            <form id="add-form">
+                <div>
+                    <label for="_authorEmail">Author-Email</label>
+                    <input type="text" id="_authorEmail">
+                    <br>
+                    <label for="_title">Title</label>
+                    <br>
+                    <input type="text" id="_title">
+                </div>
+
+                <div>
+                    <label for="_comment">Comment</label>
+                    <textarea rows=3 cols="35" id="_comment"></textarea>
+                    <br>
+                    <label for="_date">Date</label>
+                    <br>
+                    <input type="date" id="_date">
+                </div>
+                <div>
+                    <br>
+                    <button type="button" id="_add-submit" onclick="addBook()">
+                        Add
+                    </button>
+                </div>
+                <span id="msg"></span>
+            </form>
+            <footer>
+                <a href="/"> Return to prev menu</a>
+            </footer>
+        </div>
+  
+
+
+    <script>
+    function msg(m, c) {
+        console.log(m);
+        document.getElementById("msg").innerText = m;
+        document.getElementById("msg").style.color = c;
+        setTimeout(() => {
+            document.getElementById("msg").innerText = "";
+            document.getElementById("msg").style.color = "unset";
+        }, 2000);
+    }
+    function addBook() {
+        let author = document.getElementById("_authorEmail").value;
+        let title = document.getElementById("_title").value;
+        let comment = document.getElementById("_comment").value;
+        let date = document.getElementById("_date").value;
+        if (author.length > 0 && title.length > 0 && comment.length > 0) {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (this.readyState === 4) {
+                    if(this.status === 200) {
+                        msg("The Book has been saved successfully!", "blue");
+                    } else {
+                        msg("The Book couldn't be successfully saved!", "red");
+                    }
+                }
+            };
+            xmlHttp.open("GET", `/Main/RunAdd?author=${author}&title=${title}&comment=${comment}&date=${date}`, true);
+            xmlHttp.send();
+        }
+        else
+            {
+                msg("Some fields have not been completed!", "red");
+            }
+    }
+    </script>
+

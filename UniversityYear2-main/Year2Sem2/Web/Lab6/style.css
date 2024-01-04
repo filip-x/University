@@ -1,0 +1,11 @@
+
+/* don't move */
+.show {
+    height: 127px !important;
+}
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: red !important;
+}
+.dropdown-content a:hover{
+    background-color: #ddd !important;
+}

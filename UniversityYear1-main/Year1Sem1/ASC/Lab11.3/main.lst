@@ -1,0 +1,74 @@
+     1                                  bits 32 
+     2                                  
+     3                                  
+     4                                  global start        
+     5                                  
+     6                                  
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll           
+     9                                  import exit msvcrt.dll  ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern printf
+    11                                  extern scanf, exit 
+    12                                  
+    13                                  extern numere_prime
+    14                                  
+    15                                  
+    16                                  segment data use32 class=data
+    17                                  
+    18 00000000 256400                      format_string db "%d",0 ; d= base 10, c = char, s = sir de caractere, x= nr in base 16
+    19 00000003 577269746520736F6D-         format_citire db "Write some numbers:",0
+    19 0000000C 65206E756D62657273-
+    19 00000015 3A00               
+    20 00000017 25642000                    format_afisare db "%d ",0
+    21 0000001B 0000                        nr dw 0; where we save the numbers/ this is a variable to 
+    22 0000001D <res 00000014>              string_of_number resw 10
+    23                                      
+    24                                      
+    25                                      
+    26                                  segment code use32 class=code
+    27                                      start:
+    28 00000000 BE[1D000000]                mov esi,string_of_number
+    29                                      repete_writing_numbers:
+    30                                      
+    31                                          
+    32 00000005 68[03000000]                    push dword format_citire
+    33 0000000A FF15[00000000]                  call [printf]
+    34 00000010 83C404                          add esp, 4 *1
+    35                                          
+    36 00000013 68[1B000000]                    push dword nr
+    37 00000018 68[00000000]                    push dword format_string
+    38 0000001D FF15[00000000]                  call [scanf]
+    39 00000023 83C408                          add esp,4*2
+    40                                          
+    41 00000026 FF35[1B000000]                  push dword[nr]
+    42 0000002C E8(00000000)                    call numere_prime
+    43 00000031 83F801                          cmp eax,1
+    44 00000034 7405                            je prim
+    45                                          
+    46 00000036 83F800                          cmp eax,0
+    47 00000039 7404                            je nu_prim
+    48                                          
+    49                                          prim:
+    50 0000003B 8906                                mov [esi],eax
+    51 0000003D 46                                  inc esi
+    52 0000003E 46                                  inc esi ; pt ca sunt word si atunci trebuie mai mult spatiu 
+    53                                              
+    54                                              
+    55                                          nu_prim:
+    56 0000003F 66BB0000                        mov bx,0
+    57 00000043 66391D[1B000000]                cmp [nr],bx
+    58 0000004A 75B9                            jne repete_writing_numbers
+    59 0000004C BE[1D000000]                mov esi,string_of_number;ca sa reincepem de la inceput   
+    60                                      afisare:
+    61 00000051 BA00000000                      mov edx,0
+    62 00000056 668B16                          mov dx,[esi]
+    63 00000059 52                              push  edx
+    64 0000005A 68[17000000]                    push dword format_afisare
+    65 0000005F FF15[00000000]                  call [printf]
+    66 00000065 83C408                          add esp, 4 *2
+    67 00000068 46                              inc esi
+    68 00000069 46                              inc esi
+    69 0000006A 66833E00                        cmp word[esi],0
+    70 0000006E 75E1                            jne afisare
+    71 00000070 6A00                        push    dword 0      
+    72 00000072 FF15[00000000]              call    [exit]       

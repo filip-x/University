@@ -1,0 +1,12 @@
+<div *ngIf="artist">
+  <h2>Song {{artist.name}} details</h2>
+  <div>
+    <label>Id: </label>{{artist.id}}
+  </div>
+  <div>
+    <label>Name: </label>{{artist.name}}
+  </div>
+  <button (click)="delete()" class = "bottom middle">Delete</button>
+  <button (click)="update()" class = "bottom">Update</button>
+  <button (click)="goBack()" class = "right bottom">Back</button>
+</div>

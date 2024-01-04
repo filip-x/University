@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+    <script src="jquery-2.0.3.js"></script>
+
+</head>
+<body>
+    <div id="form">
+        <h1>Websites</h1>
+        <div id="homepage ">
+            <button id="button" type="button" onclick="showWebsites()">Get All Websites</button>
+            <div id="divA">
+                <b>Websites info will be listed here...</b>
+            </div>
+        </div>
+    </div>
+
+    <form style="margin-left: 25px; margin-top: 25px; width: 30%;" method="">
+        <div class="form-group">
+            <label >id:</label><br>
+            <input type="text" class="form-control" id="idU"><br>
+            <label >keyword1:</label><br>
+            <input type="text" class="form-control" id="keyword1U"><br>
+            <label >keyword2:</label><br>
+            <input type="text" class="form-control" id="keyword2U"><br>
+            <label >keyword3:</label><br>
+            <input type="text" class="form-control" id="keyword3U"><br>
+            <label >keyword4:</label><br>
+            <input type="text" class="form-control" id="keyword4U"><br>
+            <label >keyword5:</label><br>
+            <input type="text" class="form-control" id="keyword5U"><br>
+            <br>
+            <button id="updateSubmit" type="button" onclick="updateDocument();">Update</button>
+        </div>
+    </form>
+
+    <br>
+    <form style="margin-left: 25px; margin-top: 25px; width: 30%;" method="">
+        <div class="form-group">
+            <label >keywords:</label><br>
+            <input type="text" class="form-control" id="keywords"><br>
+    
+            <br>
+            <button id="keywordSubmit" type="button" onclick="searchDocuments();">Search</button>
+        </div>
+    
+        <div id="divB">
+            <b>Documents info will be listed here...</b>
+        </div>
+    </form>
+
+</body>
+</html>
+
+<script>
+    
+    function showWebsites(websites)
+    {
+        $.get("../server.php?action=getWebsite",
+        function (data){
+            $('#divA').html(data);
+        });
+    }
+ /*
+    function ssshowWebsites()
+    {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function(data)
+            {
+            $('#divA').html(data);
+            };
+        xmlHttp.open("GET","localhost:8000/server.php?action=getWebsite",true);
+
+        xmlHttp.send();
+    }
+    */
+
+    function updateDocument()
+    {
+        var idU=document.getElementById('idU').value;
+        var keywordU1=document.getElementById('keyword1U').value;
+        var keywordU2=document.getElementById('keyword2U').value;
+        var keywordU3=document.getElementById('keyword3U').value;
+        var keywordU4=document.getElementById('keyword4U').value;
+        var keywordU5=document.getElementById('keyword5U').value;
+    
+        $.post("../server.php",{action:'update',id:idU,keyword1:keywordU1,keyword2:keywordU2,keyword3:keywordU3,keyword4:keywordU4,keyword5:keywordU5},
+        function(data)
+        {
+            alert(data);      
+        }
+        );
+    }
+
+    function searchDocuments()
+    {
+        var keywords = document.getElementById("keywords").value;
+        $.post("../server.php",{action:'search',keywords: keywords},
+        function (data)
+        {
+            $('#divB').html(data);
+        });
+        
+    }
+
+
+
+</script>

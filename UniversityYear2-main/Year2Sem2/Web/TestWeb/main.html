@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="jquery-2.0.3.js"></script>
+
+</head>
+<body>
+    <div id="form">
+        <h1>Movies</h1>
+        <form id = "add-form">
+            <div>
+                <label for="category">CategoryId</label>
+                <input type = "text" id = "category">
+                <br>
+                <label for ="description">Description</label>
+                <br>
+                <input type="text" id = "description">
+                <br>
+            </div>
+        </form>
+            
+            <button id="buttonadd" type="button" onclick="addAuction()">Add Auction</button>
+            </div>
+
+    <form style="margin-left: 25px; margin-top: 25px; width: 30%;" method="">
+        <div class="form-group">
+            <label >id:</label><br>
+            <input type="text" class="form-control" id="id"><br>
+            <label >CategoryId:</label><br>
+            <input type="text" class="form-control" id="categoryU"><br>
+            <label >Description:</label><br>
+            <input type="text" class="form-control" id="descriptionU"><br>
+            
+            <br>
+            <button id="updateSubmit" type="button" onclick="updateAuction();">Update</button>
+        </div>
+    </form>
+
+    <br>
+
+
+
+
+</body>
+</html>
+
+
+<script>
+function addAuction()
+{
+    var categoryid = document.getElementById("category").value;
+    var description = document.getElementById("description").value;
+    alert(categoryid+" "+description);
+    $.post("../server.php",{action:'add',categoryid: categoryid,description: description},
+    function(data)
+    {
+        alert(data);
+    }
+    );
+}
+
+
+function updateAuction()
+{
+    var id =document.getElementById("id").value;
+    var categoryid = document.getElementById("categoryU").value;
+    var description = document.getElementById("descriptionU").value;
+    alert(categoryid+" "+description);
+    $.post("../server.php",{action:'update',id:id,categoryid: categoryid,description: description},
+    function(data)
+    {
+        alert(data);
+    }
+    );
+}
+</script>

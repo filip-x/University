@@ -1,0 +1,361 @@
+     1                                  bits 32 
+     2                                  
+     3                                  
+     4                                  global start        
+     5                                  
+     6                                  
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import printf msvcrt.dll     ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import scanf msvcrt.dll
+    11                                  import fread msvcrt.dll
+    12                                  import fwrite msvcrt.dll
+    13                                  import fscanf msvcrt.dll  
+    14                                  import fopen msvcrt.dll 
+    15                                  extern scanf 
+    16                                  extern printf
+    17                                  extern fread
+    18                                  extern fwrite
+    19                                  extern fscanf
+    20                                  extern fopen
+    21                                                    
+    22                                  
+    23                                  
+    24                                  segment data use32 class=data
+    25                                  ;01.	Se citeste din fisier un sir de numere.
+    26                                  ;a)	Sa se calculeze suma, produsul numerelor, pozitiile maximului. 
+    27                                  ;b)	Sa se sorteze sirul de numere.
+    28                                  ;c)	Sa se scrie sirul de numere in baza doi intr-un alt fisier.
+    29                                  ;d)	Sa se calculeze cel mai lung subsir de numere pare, afisati-l in baza 16.
+    30                                  ;e)	Afisati divizorii numerelor neprime.
+    31                                  ; d= base 10, c = char, s = sir de caractere, x= nr in base 16
+    32                                  
+    33                                  
+    34 00000000 25642000                format_afisare_consola db "%d ",0;
+    35 00000004 0A25642025642000        format_afisare_consola_cerinta1 db 10,"%d ", "%d ",0
+    36 0000000C 202564200A00            format_afisare_maxim_cerinta1 db " %d ",10,0
+    37 00000012 256400                  format_citire_fisire db "%d",0
+    38 00000015 7200                    file_acces db "r",0 ; we  will  read/ pt fisier
+    39 00000017 00000000                file_descriptor dd 0;
+    40 0000001B 6669736965725F6E75-     fisier_numere db "fisier_numere.txt",0;
+    40 00000024 6D6572652E74787400 
+    41 0000002D <res 00000064>          sir_nr resb 100;
+    42 00000091 00000000                lungime_sir dd 0
+    43 00000095 0000                    suma dw 0
+    44 00000097 01000000                produs dd 1
+    45 0000009B 00                      max db 0
+    46 0000009C <res 00000064>          sir_maxime resb 100
+    47 00000100 00                      len_maxim db 0
+    48                                  ;pana aici am facut sub a.)
+    49                                  ;pentru b avem nevoie de sir 
+    50                                  
+    51 00000101 2025642000              format_afisare_cerinta2 db " %d ",0
+    52                                  ; cerinta c
+    53 00000106 2025782000              format_afisare_cerinta3 db " %x ",0
+    54 0000010B 00                      nr_maxim_pare db 0
+    55 0000010C 02                      par db 2
+    56                                  
+    57                                  
+    58                                  
+    59                                  
+    60                                  segment code use32 class=code
+    61                                      start:
+    62                                        
+    63                                        
+    64 00000000 68[15000000]                    push dword file_acces
+    65 00000005 68[1B000000]                    push dword fisier_numere
+    66 0000000A FF15[00000000]                  call [fopen] ; facem asta pentru a obtine file_descriptor/ pune file_acces si fisier_numere in file_descriptor
+    67 00000010 83C408                          add esp, 4*2     
+    68                                       
+    69 00000013 A3[17000000]                    mov [file_descriptor],eax;file descriptor is like  the file itself
+    70 00000018 83F800                          cmp eax, 0
+    71 0000001B 0F842D020000                    je final
+    72                                          ;========
+    73                                          
+    74 00000021 BE[2D000000]                    mov esi, sir_nr; we mov in esi the  addres  of  sir_nr( the first address)
+    75                                          
+    76                                          repeta:
+    77 00000026 56                                  push dword esi
+    78 00000027 68[12000000]                        push dword format_citire_fisire
+    79 0000002C FF35[17000000]                      push dword [file_descriptor]
+    80 00000032 FF15[00000000]                      call [fscanf]; fscanf preia element cu element/ fread preia toata linie (cate caractere ii dai)
+    81 00000038 83C40C                              add esp, 4*3
+    82 0000003B 46                                  inc esi
+    83 0000003C 83F8FF                              cmp eax,-1
+    84 0000003F 75E5                                jne repeta
+    85                                          ;we take the elemtns from the file and  put them  in  the sir_nr with esi as  our  index 
+    86                                           
+    87 00000041 89F0                            mov eax,esi
+    88 00000043 BE[2D000000]                    mov esi,sir_nr
+    89 00000048 29F0                            sub eax,esi
+    90 0000004A A3[91000000]                    mov dword[lungime_sir],eax
+    91 0000004F 832D[91000000]01                sub dword[lungime_sir],1
+    92 00000056 B900000000                      mov ecx,0
+    93                                          ;=======  here  he   find the  the  lenght  of the string 
+    94                                          repeta2:
+    95 0000005B BB00000000                          mov ebx,0
+    96 00000060 8A1E                                mov bl,[esi] ;in  bl ii dam direct valoarea 
+    97 00000062 51                                  push ecx; it's to push  bcs  ecx  will change so  we need  to  push  the value in ecx and then take it  back 
+    98 00000063 53                                  push dword ebx,; in  ebx o sa imi puna numerele pe care le  doresc
+    99 00000064 68[00000000]                        push dword format_afisare_consola; the format 
+   100 00000069 FF15[00000000]                      call [printf]
+   101 0000006F 83C408                              add esp,4*2
+   102 00000072 59                                  pop ecx ; we pop  eax now
+   103 00000073 46                                  inc esi ; we  increase esi to go  to the next element
+   104 00000074 41                                  inc ecx ;ecx  is  the  ct to see when ecx is equal to lunime_sir
+   105 00000075 3B0D[91000000]                      cmp ecx,[lungime_sir]
+   106 0000007B 75DE                                jne repeta2; the jump and cmp
+   107                                              
+   108 0000007D 51                              push ecx
+   109 0000007E BE[2D000000]                    mov esi,sir_nr 
+   110 00000083 8A0D[2D000000]                  mov cl,[sir_nr]
+   111 00000089 880D[9B000000]                  mov byte[max],cl
+   112 0000008F 59                              pop ecx ;  nu mai facem 0 ca facem cu loop 
+   113                                          ;here we make the sum of every element
+   114 00000090 B801000000                      mov eax,1
+   115                                          repeta3_suma:
+   116 00000095 BB00000000                          mov ebx,0
+   117 0000009A 8A1E                                mov bl,[esi]
+   118 0000009C 66011D[95000000]                    add [suma],bx
+   119 000000A3 F7E3                                mul ebx; be carefull  mul  with the same size
+   120 000000A5 46                                  inc esi
+   121 000000A6 381D[9B000000]                      cmp [max],bl
+   122 000000AC 7202                                jnae interschimb
+   123 000000AE EB06                                jmp maxim_schimb
+   124                                              interschimb:
+   125 000000B0 881D[9B000000]                          mov [max],bl
+   126                                              maxim_schimb:
+   127                                              
+   128 000000B6 E2DD                                loop repeta3_suma ; loop-ul face cmp la ecx si 0 si daca nu e repeta la ce ii dau si scade ecx 
+   129 000000B8 A3[97000000]                        mov [produs],eax
+   130                                          ; we pint  the sum 
+   131                                          
+   132 000000BD BA00000000                      mov edx,0
+   133 000000C2 BB00000000                      mov ebx,0
+   134 000000C7 668B1D[95000000]                mov bx,[suma]
+   135 000000CE 8B15[97000000]                  mov edx,[produs]
+   136 000000D4 52                              push edx
+   137 000000D5 53                              push ebx
+   138 000000D6 68[04000000]                    push dword format_afisare_consola_cerinta1
+   139 000000DB FF15[00000000]                  call [printf]
+   140 000000E1 83C40C                          add esp,4*3
+   141 000000E4 B900000000                      mov ecx,0
+   142                                          
+   143 000000E9 BE[2D000000]                    mov esi,sir_nr
+   144 000000EE BF[9C000000]                    mov edi,sir_maxime
+   145                                          repeta4_maxim:
+   146 000000F3 8A1D[9B000000]                      mov bl,[max]
+   147 000000F9 3A1E                                cmp bl,[esi]
+   148 000000FB 7402                                je ct_in_sir
+   149 000000FD EB0A                                jmp daca_nu
+   150                                              ct_in_sir:
+   151 000000FF 880F                                    mov [edi],cl; punem indicele in edi 
+   152 00000101 8005[00010000]01                        add byte[len_maxim],1
+   153 00000108 47                                      inc edi;trecem la  urmatorul element din edi 
+   154                                              daca_nu:
+   155 00000109 46                                  inc esi
+   156 0000010A 41                                  inc ecx
+   157 0000010B 3B0D[91000000]                      cmp ecx,[lungime_sir]
+   158 00000111 75E0                                jne repeta4_maxim
+   159                                              
+   160 00000113 B900000000                      mov ecx,0
+   161 00000118 BF[9C000000]                    mov edi,sir_maxime
+   162                                          repeta5_maxim_afisare:
+   163 0000011D 60                                  pusha
+   164 0000011E BB00000000                          mov ebx,0
+   165 00000123 8A1F                                mov bl,[edi]
+   166 00000125 53                                  push dword ebx
+   167 00000126 68[0C000000]                        push dword format_afisare_maxim_cerinta1
+   168 0000012B FF15[00000000]                      call [printf]
+   169 00000131 83C408                              add esp, 4*2
+   170 00000134 61                                  popa
+   171 00000135 47                                  inc edi
+   172 00000136 41                                  inc ecx
+   173 00000137 3A0D[00010000]                      cmp cl,[len_maxim]
+   174 0000013D 75DE                                jne repeta5_maxim_afisare
+   175                                          ; ===========================sortare sir
+   176                                          
+   177 0000013F BE[2D000000]                    mov esi,sir_nr
+   178 00000144 B900000000                      mov ecx,0
+   179                                          repeta6_sortare:
+   180 00000149 83F900                              cmp ecx,0
+   181 0000014C 7402                                je increase_ecx
+   182 0000014E EB04                                jmp sari_peste
+   183                                              increase_ecx:
+   184 00000150 41                                      inc ecx
+   185 00000151 46                                      inc esi
+   186 00000152 EB2C                                jmp sari_peste3
+   187                                              sari_peste:
+   188                                              
+   189 00000154 8A1E                                mov bl,[esi]
+   190 00000156 4E                                  dec esi; 
+   191 00000157 8A16                                mov dl,[esi]
+   192 00000159 46                                  inc esi ; ca sa nu fie schimbat
+   193 0000015A 38D3                                cmp bl,dl
+   194 0000015C 7302                                jae increase_row
+   195 0000015E EB04                                jmp sari_peste2
+   196                                              increase_row:
+   197 00000160 46                                      inc esi
+   198 00000161 41                                      inc ecx
+   199 00000162 EB1C                                    jmp sari_peste3
+   200                                                  
+   201                                              sari_peste2:
+   202 00000164 BB00000000                          mov ebx,0; ajuta la interschimbare ca sa nu avem valori reziduale
+   203 00000169 BA00000000                          mov edx,0
+   204                                              
+   205 0000016E 8A1E                                mov bl,[esi]
+   206 00000170 4E                                  dec esi
+   207                                              
+   208 00000171 8A16                                mov dl,[esi]
+   209 00000173 46                                  inc esi
+   210                                              
+   211 00000174 53                                  push ebx
+   212 00000175 88D3                                mov bl,dl
+   213 00000177 5A                                  pop edx
+   214                                              ;interschimbarea
+   215                                              
+   216 00000178 881E                                mov [esi],bl
+   217 0000017A 4E                                  dec esi
+   218                                             
+   219 0000017B 8816                                mov [esi],dl
+   220 0000017D 46                                  inc esi
+   221                                              
+   222 0000017E 49                                  dec ecx 
+   223 0000017F 4E                                  dec esi
+   224                                                  
+   225                                              sari_peste3:
+   226 00000180 3B0D[91000000]                      cmp ecx,[lungime_sir]; atunci se opreste "while" 
+   227 00000186 72C1                                jb repeta6_sortare
+   228                                             
+   229 00000188 B900000000                         mov ecx,0
+   230 0000018D BE[2D000000]                       mov esi,sir_nr
+   231                                             
+   232                                             ; afisare sir 
+   233                                             repeta7_sortare_afisare:
+   234 00000192 60                                 pusha
+   235 00000193 BB00000000                         mov ebx,0
+   236 00000198 8A1E                               mov bl,[esi]
+   237 0000019A 53                                 push dword ebx
+   238 0000019B 68[01010000]                       push dword format_afisare_cerinta2
+   239 000001A0 FF15[00000000]                     call [printf]
+   240 000001A6 83C408                             add esp,4*2
+   241 000001A9 61                                 popa; dap pop aici pentru ca esi si ecx sunt 1 si apoi le crestem pentru a pune urmatorul element
+   242 000001AA 41                                 inc ecx
+   243 000001AB 46                                 inc esi
+   244                                             
+   245 000001AC 3B0D[91000000]                     cmp ecx,[lungime_sir]
+   246 000001B2 75DE                               jne repeta7_sortare_afisare
+   247                                             
+   248 000001B4 B900000000                         mov ecx,0; inceput de sir ( contorul)
+   249 000001B9 BA00000000                         mov edx,0
+   250 000001BE B800000000                         mov eax,0
+   251 000001C3 BE[2D000000]                       mov esi,sir_nr;inceput de sir 
+   252                                             
+   253                                             repeta8_numere_pare_consecutive:
+   254                                                  
+   255 000001C8 3B0D[91000000]                          cmp ecx,[lungime_sir]
+   256 000001CE 7456                                    je sari_peste_tot
+   257                                                  
+   258 000001D0 8A06                                    mov al,[esi]
+   259 000001D2 F635[0C010000]                          div byte [par]
+   260 000001D8 80FC00                                  cmp ah,0
+   261 000001DB 7421                                    je e_par ;daca nr e par sa repete
+   262                                                  
+   263                                                  e_impar:
+   264                                                      
+   265 000001DD 3A15[0B010000]                              cmp dl,[nr_maxim_pare]
+   266 000001E3 7702                                        ja interschimb2
+   267 000001E5 EB0F                                        jmp daca_nu3
+   268                                                      interschimb2:
+   269 000001E7 89F7                                            mov edi,esi
+   270 000001E9 51                                              push ecx
+   271 000001EA 88D1                                            mov cl,dl
+   272                                                          repeta10:
+   273 000001EC 4F                                                  dec edi
+   274 000001ED E2FD                                                loop repeta10 ; puteam sa ziceam si ca cl si si sa  facem cu jmp 
+   275 000001EF 59                                              pop ecx
+   276 000001F0 8815[0B010000]                                  mov [nr_maxim_pare],dl
+   277                                                      daca_nu3:
+   278 000001F6 B200                                        mov dl,0
+   279 000001F8 41                                          inc ecx
+   280 000001F9 46                                          inc esi
+   281 000001FA B400                                        mov ah,0; ca sa nu fie valori de la cealalta in ah 
+   282 000001FC EBCA                                        jmp repeta8_numere_pare_consecutive
+   283                                                  e_par:
+   284 000001FE FEC2                                        inc dl
+   285 00000200 40                                          inc eax
+   286 00000201 41                                          inc ecx
+   287 00000202 46                                          inc esi
+   288 00000203 EBC3                                        jmp repeta8_numere_pare_consecutive
+   289                                                      
+   290 00000205 4E                                      dec esi
+   291 00000206 8A06                                    mov al,[esi]
+   292 00000208 F635[0C010000]                          div byte [par]
+   293 0000020E 80FC00                                  cmp ah,0
+   294 00000211 7402                                    je interschimb_final
+   295 00000213 EB09                                    jmp daca_nu2
+   296                                                  interschimb_final:
+   297                                                  
+   298 00000215 89F7                                        mov edi,esi
+   299 00000217 51                                          push ecx
+   300 00000218 88D1                                        mov cl,dl
+   301                                                      repeta_final:
+   302 0000021A 4F                                              dec edi
+   303 0000021B E2FD                                            loop repeta_final ; puteam sa ziceam si ca cl si si sa  facem cu jmp 
+   304 0000021D 59                                          pop ecx
+   305                                                  daca_nu2:
+   306                                                      
+   307                                                      
+   308                                       
+   309 0000021E 3B0D[91000000]                          cmp ecx,[lungime_sir]
+   310 00000224 75A2                                    jne repeta8_numere_pare_consecutive
+   311                                                  
+   312                                                  sari_peste_tot:
+   313                                                  
+   314                                              
+   315                                             ; afisare sir 
+   316 00000226 BA00000000                         mov edx,0
+   317                                             repeta10_sortare_afisare:
+   318 0000022B 60                                 pusha
+   319 0000022C BB00000000                         mov ebx,0
+   320 00000231 8A1F                               mov bl,[edi]
+   321 00000233 53                                 push dword ebx
+   322 00000234 68[06010000]                       push dword format_afisare_cerinta3
+   323 00000239 FF15[00000000]                     call [printf]
+   324 0000023F 83C408                             add esp,4*2
+   325 00000242 61                                 popa; dap pop aici pentru ca esi si ecx sunt 1 si apoi le crestem pentru a pune urmatorul element
+   326 00000243 47                                 inc edi
+   327 00000244 FEC2                               inc dl
+   328 00000246 3A15[0B010000]                     cmp dl,[nr_maxim_pare]
+   329 0000024C 75DD                               jne repeta10_sortare_afisare
+   330                                             
+   331                                             
+   332                                          
+   333                                              
+   334                                          
+   335                                          
+   336                                              
+   337                                          
+   338                                         
+   339                                          
+   340                                          
+   341                                          
+   342                                                 
+   343                                          
+   344                                              
+   345                                              
+   346                                          
+   347                                          
+   348                                          
+   349                                          
+   350                                          
+   351                                        
+   352                                        
+   353                                          
+   354                                      
+   355                                      
+   356                                      
+   357                                          final:
+   358                                          ; exit(0)
+   359 0000024E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   360 00000250 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

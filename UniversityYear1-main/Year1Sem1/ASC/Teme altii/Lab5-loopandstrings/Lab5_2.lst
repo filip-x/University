@@ -1,0 +1,45 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                      ;Two byte strings S1 and S2 of the same length are given. Obtain the string D where each element is the sum of the corresponding elements from S1 and S2
+    15 00000000 010306020302                s1 db 1,3,6,2,3,2;
+    16                                      len_s equ $-s1;
+    17 00000006 060308010205                s2 db 6,3,8,1,2,5;
+    18                                      
+    19                                      ;rez 7,6,14,3,5,7
+    20 0000000C 00<rept>                    d times len_s db 0 
+    21                                      
+    22                                  ; our code starts here
+    23                                  segment code use32 class=code
+    24                                      start:
+    25                                          ; ...
+    26 00000000 BE[00000000]                    mov esi,s1; first string esi
+    27 00000005 B906000000                      mov ecx,len_s; len of both strings ecx
+    28 0000000A BF[06000000]                    mov edi,s2;second string edi
+    29 0000000F BB[0C000000]                    mov ebx,d; final string ebx
+    30                                          
+    31                                          for:
+    32 00000014 83F900                              cmp ecx,0;
+    33 00000017 740B                                je final
+    34 00000019 8A06                                    mov al,[esi];
+    35 0000001B 0207                                    add al,[edi];
+    36 0000001D 8803                                    mov byte[ebx], al;
+    37 0000001F 46                                      inc esi;
+    38 00000020 47                                      inc edi;
+    39 00000021 43                                      inc ebx;
+    40 00000022 E2F0                            loop for
+    41                                          final:
+    42                                          
+    43                                          ; exit(0)
+    44 00000024 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    45 00000026 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

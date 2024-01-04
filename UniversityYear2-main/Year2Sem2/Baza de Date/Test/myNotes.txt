@@ -1,0 +1,99 @@
+L1:
+ACID:
+Atomic: all operations in a transaction are executed or none are
+Consistency: a transaction must preserve the consistency of the database after execution.
+	During a transaction the DB can we in the wrong state but in the end it has to be corrected
+Isolation:a transaction is protected from the effects of concurrently scheduling other transactions.
+Durability: the effects of a successfully completed transaction should persist even if a system crash befoire all the changes have been written to disk
+
+• WR conflict
+• T2 is reading a data object previously written by T1
+• RW conflict
+• T2 is writing a data object previously read by T1
+• WW conflict
+• T2 is writing a data object previously written by T1
+
+Dirty Reads: reading uncommitted data (W-R conflicts) T2 reads sth written by T1
+Unrepetable reads(R-W conflicts)  T2 writes sth already read by T1
+Overwirting uncommitted data (W-W conflicts) 2 writes sth already written by T1
+
+Serial and Non-Serial Schedules
+
+
+L2:
+-Transactions
+-ConCurrency Control
+Conflict:
+	ReadT1A-WriteT2A
+	WriteT1A-ReadT2A
+	WriteT1A-WriteT2A
+	ReadT1B-WriteT2B
+	WriteT1B-ReadT2B
+	WriteT1B-WriteT2B
+
+Conflict Serializability - Precedence Graph:
+	-one node for every committed transaction in S
+	- an arc from Ti and Tj if an action in Ti precedes and conflicts with one of the actions in Tj
+	-a schedule S is conflict serializable if and only if its precedence graph is acyclic
+
+Serial Schedules: transactions are not interlraved
+
+View serializability: Serializable schedules iff their effect is identical to the effect of a serial schedule
+
+Recoverable Schedules: a schedule in which a transaction T commits only after all transactions whose changes T read commit
+			a schedule in which a transaction T is reading only changes of commited transactions is said to avoid cascading aborts
+
+Lock Based Concurrency Control:
+	-is a technique used to guarantee serializable, recoverable schedules.
+	-lock: it prevents a transsaction from accessing a data obj while another transaction is accessing the obj
+	-is a set of rules engorced by the transaction manager and obeyed by all transactions.
+SLock- if a transaction holds an SLock on an obj, it can read the obj, but it cannot modify it
+XLock- if a transaction holds an XLock on an obj, it can both read and write the obj
+
+L3:
+
+Locking  protocols:
+	-Strict 2PL
+	-2PL
+-Strict 2PL: allows only serializable schedules(only schedules with acylcic precedence graphs are allow by this protocol)
+-2PL: S1, S2 are view equivalent (S1 ≡v S2) iff each transaction performs the same computation in S1 and S2 and S1, S2 produce the same final DB state
+	- once releasing a lock, it cannot request another one
+Strict Schedules:
+	-Serial schedules ⊂ conflict serializable sch ⊂ view serializable sch ⊂ serializable sch ⊂ all schedules
+	-Strict2PL only allows strict schedules.
+DeadLock:
+	-T commits only after all the transactions whose changes T reads have committed
+Locks:
+	-Read uncommitted
+	-Read committed
+	-Repeatable read 
+	-Serializable
+
+L4:
+
+Recovery Manager: 
+-atomicity: the effects of uncommitted tansactions are done
+-durability: the effects of committedtreansactions sirvive system crashes 
+
+Transactions failure causes: 
+	-for each obj, entries of the form(no.of tans with a lock on that obj, lock type, pointer to queue of lock requests)
+Buffer Manager:
+	-for each trans,the list of locks held by it 
+a.Steal/no steal
+steal:
+• T’s changes can be written to disk before it commits
+• transaction T2 needs a page; the BM chooses F as a replacement frame
+no-steal approach:
+• T’s changes cannot be written to disk before it commits
+(while T is in progress); T2 steals a frame from T
+
+b.Force/no force
+force approach
+• T’s changes are immediately forced to disk when it commits
+no-force approach
+• T’s changes are not forced to disk when it commits
+ARIES:
+	-Strict 2PL -acquires s/x lock before r/w; locks released when trans ends=> only serializable sch
+	-LOG - we use the log in order to make checkpoints and help ourselfs to undo/redo the changes that we made( or to know where we stand when a crash stands)
+
+

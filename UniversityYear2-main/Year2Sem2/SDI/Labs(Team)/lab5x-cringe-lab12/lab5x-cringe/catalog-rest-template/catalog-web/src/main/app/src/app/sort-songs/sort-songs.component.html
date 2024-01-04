@@ -1,0 +1,6 @@
+<ul class="artists">
+  <li *ngFor="let song of songService.sortedSong">
+    {{song.name}}
+  </li>
+</ul>
+<button (click)="goBack()" class = "right bottom" >Back</button>

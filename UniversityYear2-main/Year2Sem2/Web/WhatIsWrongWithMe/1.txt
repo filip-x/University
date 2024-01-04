@@ -1,0 +1,69 @@
+<?php
+require 'dbConn.php';
+
+if(!$conn) {
+    echo "NOT OK";
+    die('Could not connect to database:' . mysqli_error($conn));
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+    $username=$_SESSION["user"];
+}
+
+$statement = $conn->prepare("SELECT * FROM author WHERE name=?");
+$statement->bind_param("s", $username);
+$statement->execute();
+$result = $statement->get_result();
+
+if($row = mysqli_fetch_array($result)){
+    $movies=explode(" ", $row['movielist']);
+    $docs=explode(" ", $row['documentlist']);
+    $movArr=[];
+    $docArr=[];
+
+    foreach ($movies as $m){
+        $statement = $conn->prepare("SELECT * FROM movie WHERE title=?");
+        $statement->bind_param("s", $m);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($row2 = mysqli_fetch_array($result)) {
+            array_push($movArr, $row2);
+        }
+    }
+
+    foreach ($docs as $d){
+        $statement = $conn->prepare("SELECT * FROM document WHERE name=?");
+        $statement->bind_param("s", $d);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($row3 = mysqli_fetch_array($result)) {
+            array_push($docArr, $row3);
+        }
+    }
+    $i=0;
+    $j=0;
+    while($i<count($docArr) && $j<count($movArr)){
+        //echo json_encode($docArr[$i]) . " ";
+        echo $docArr[$i]['id'] . " " . $docArr[$i]['name'] . " " . $docArr[$i]['contents'] . " | ";
+        //echo json_encode($movArr[$j]) . " ";
+        echo $movArr[$j]['id'] . " " . $movArr[$j]['title'] . " " . $movArr[$j]['duration'] . " | ";
+        $i+=1;
+        $j+=1;
+    }
+    while($i<count($docArr)){
+        //echo json_encode($docArr[$i]) . " ";
+        echo $docArr[$i]['id'] . " " . $docArr[$i]['name'] . " " . $docArr[$i]['contents'] . " | ";
+        $i+=1;
+    }
+    while($j<count($movArr)){
+        //echo json_encode($movArr[$j]) . " ";
+        echo $movArr[$j]['id'] . " " . $movArr[$j]['title'] . " " . $movArr[$j]['duration'] . " | ";
+        $j+=1;
+    }
+    //echo json_encode($movArr);
+    //echo json_encode($docArr);
+}
+
+mysqli_close($conn);
+?>

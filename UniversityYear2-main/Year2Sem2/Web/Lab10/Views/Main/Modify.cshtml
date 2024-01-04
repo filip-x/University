@@ -1,0 +1,259 @@
+﻿
+@{
+    ViewBag.Title = "Modify";
+}
+
+<style>
+
+    body {
+        margin: 0;
+    }
+
+        body img {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: -100;
+            top: 0;
+        }
+
+    
+
+        #container h1 {
+            text-align: center;
+            color: yellowgreen;
+            font-size: 40px;
+            margin: 0;
+        }
+
+    #main-menu {
+        width: 100%;
+        height: 100%;
+    }
+
+    body ul {
+        margin: 0;
+        padding-left: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+        body ul li:hover {
+            font-weight: 1000;
+        }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    body ul li {
+        flex-grow: 1;
+        padding-top: 40px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 35px;
+    }
+        body footer {
+            text-align: center;
+        }
+
+            body footer a {
+                text-decoration: none;
+                color: blanchedalmond;
+            }
+
+        #modify-form {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            font-family: "Times New Roman", sans-serif;
+            font-size: 20px;
+        }
+
+            #modify-form input, #modify-form textarea {
+                font-size: 20px;
+                font-family: "Times New Roman", sans-serif;
+                resize: none;
+            }
+
+        #_modify-submit {
+            font-size: 20px;
+            font-family: "Times New Roman", sans-serif;
+        }
+
+        #_load-submit {
+            font-size: 20px;
+            font-family: "Times New Roman", sans-serif;
+        }
+
+        #modify-form div {
+            position: relative;
+            justify-content: space-evenly;
+            width: 65%;
+        }
+    </style>
+        <h1>Menu Books - Modify</h1>
+        <div id="main-menu">
+            <form id="modify-form">
+                <div>
+                    <!--<label for="_id">Id</label>
+                    <br>
+                    <input class="update-field" type="number" id="_id">
+                    <br>-->
+                    <label for="_authorEmail">Author-Email</label>
+                    <input class="update-field" type="text" id="_authorEmail">
+                    <br>
+                    <label for="_title">Title</label>
+                    <br>
+                    <input class="update-field" type="text" id="_title">
+                </div>
+
+                <div>
+                    <label for="_comment">Comment</label>
+                    <textarea class="update-field" rows=3 cols="35" id="_comment"></textarea>
+                    <br>
+                    <label for="_date">Date</label>
+                    <br>
+                    <input class="update-field" type="date" id="_date">
+                </div>
+                <div>
+                    <br>
+                    <!--<button type="button" id="_load-submit" onclick="loadData()">
+                        Load
+                    </button>
+                    <br>-->
+                    <br>
+                    <button type="button" id="_modify-submit" onclick="modifyBook()">
+                        Modify
+                    </button>
+                </div>
+                <span id="msg"></span>
+            </form>
+            <footer>
+                <a href="/"> Return to prev menu</a>
+            </footer>
+        </div>
+   
+
+    <script>
+
+        let id; 
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    function initialIdSwitchDisable() {
+        document.getElementById("_id").setAttribute("disabled", null);
+        document.getElementById("_load-submit").setAttribute("disabled", null);
+    }
+    function initialIdSwitchEnable() {
+        document.getElementById("_id").removeAttribute("disabled");
+        document.getElementById("_load-submit").removeAttribute("disabled");
+    }
+    function switchDisable() {
+        let switchable = document.getElementsByClassName("updatable-fields");
+        for (let element of switchable) {
+            element.setAttribute("disabled", null);
+        }
+    }
+    function switchEnable() {
+        let switchable = document.getElementsByClassName("updatable-fields");
+        for (let element of switchable) {
+            element.removeAttribute("disabled");
+        }
+    }
+    function msg(m, c) {
+        console.log(m);
+        document.getElementById("msg").innerText = m;
+        document.getElementById("msg").style.color = c;
+        setTimeout(() => {
+            document.getElementById("msg").innerText = "";
+            document.getElementById("msg").style.color = "unset";
+        }, 2000);
+    }
+
+    function modifyBook() {
+        let author = document.getElementById("_authorEmail").value;
+        let title = document.getElementById("_title").value;
+        let comment = document.getElementById("_comment").value;
+        let date = document.getElementById("_date").value;
+        if (author.length > 0 && title.length > 0 && comment.length > 0) {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function(data) {
+                if (this.readyState === 4) {
+                    if (this.status === 200) {
+                        msg("The Book has been updated successfully! " + this.responseText, "blue");
+                    } else {
+                        msg("The Book couldn't be successfully updated!", "red");
+                    }
+                }
+            };
+            xmlHttp.open("GET", `/Main/RunModify?id=${id}&author=${author}&title=${title}&comment=${comment}&date=${date}`, true);
+            xmlHttp.send();
+        } else {
+            msg("Some fields have not been completed!", "red");
+        }
+    }
+        async function loadBook(load_id) {
+            id = load_id;
+        //let id = document.getElementById("_id").value;
+        if (id.length > 0) {
+            let author = document.getElementById("_authorEmail");
+            let title = document.getElementById("_title");
+            let comment = document.getElementById("_comment");
+            let date = document.getElementById("_date");
+            let xmlHttp = new XMLHttpRequest();
+            return await new Promise((resolve) => {
+                xmlHttp.onreadystatechange = function() {
+                    if (this.readyState === 4) {
+                        if(this.status === 200) {
+                            if (this.responseText === "false") {
+                                msg("The id has not been found!", "red");
+                                resolve(false);
+                            } else {
+                                let arr = JSON.parse(this.responseText);
+                                author.value = arr[0];
+                                title.value = arr[1];
+                                comment.value = arr[2];
+                                date.value = arr[3];
+
+                                resolve(true);
+                                msg("Successfully loaded the Book!", "blue");
+                            }
+                        } else {
+                            resolve(false);
+                            msg("The Book couldn't be successfully saved!", "red");
+                        }
+                    }
+                };
+                xmlHttp.open("GET", `/Main/Id?id=${id}`, true);
+                xmlHttp.send();
+            })
+        } else {
+            msg("No Id has been introduced!", "red");
+            return false;
+        }
+    }
+    async function loadData() {
+        initialIdSwitchDisable();
+        let answer = await loadBook();
+        if (answer === true) {
+            switchEnable();
+        } else {
+            initialIdSwitchEnable();
+        }
+    }
+    loadBook(getParameterByName("id"));
+    //switchDisable();
+    </script>
+
+

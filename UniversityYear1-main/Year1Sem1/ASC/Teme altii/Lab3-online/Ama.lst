@@ -1,0 +1,68 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14 00000000 02010303040206              a DB 2, 1, 3, 3, 4, 2, 6
+    15                                      len1 equ $ - a
+    16 00000007 040507060201                b DB 4, 5, 7, 6, 2, 1
+    17                                      len2 equ $ - b
+    18                                      len equ len1 + len2
+    19 0000000D 00<rept>                    r times len DB 0
+    20 0000001A 02                          doi db 2;
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24                                          ; ...
+    25 00000000 BE[0C000000]                    mov esi, b + len2 - 1; b-final
+    26 00000005 B906000000                      mov ecx, len2;
+    27 0000000A BF[0D000000]                    mov edi, r;
+    28                                          
+    29                                          for1:; for-ul asta merge pe b invers si preia elementele si le pune in r 
+    30 0000000F 83F900                              cmp ecx,0;
+    31 00000012 7408                                je dupa_for1; daca cmp ii adevarat atunci sa iasa din for( nu e necesara conditia pentru ca loop deja face asta, dar eu o pun oricum)
+    32 00000014 8A06                                    mov al,[esi]
+    33 00000016 8807                                    mov byte[edi],al;
+    34 00000018 4E                                      dec esi;
+    35 00000019 47                                      inc edi;
+    36 0000001A E2F3                            loop for1; 
+    37                                          dupa_for1:
+    38                                          
+    39                                          ; pana aici in r avem tot b-ul cum trebuie;
+    40                                          
+    41 0000001C B907000000                      mov ecx,len1;
+    42 00000021 BE[00000000]                    mov esi,a; mergem pe adresa de inceput a lui a ca sa preluam numerele din a 
+    43 00000026 BB00000000                      mov ebx,0; aici o sa tinem o dublura la numere pentru ca noi le impartim 
+    44                                          
+    45                                          for2:
+    46 0000002B 83F900                              cmp ecx,0;
+    47 0000002E 7419                                je final_program
+    48 00000030 66B80000                            mov ax,0;
+    49 00000034 8A06                                mov al,[esi];numarul pe care il impartim
+    50 00000036 8A1E                                mov bl,[esi];copia 
+    51 00000038 F635[1A000000]                      div byte[doi];
+    52 0000003E 80FC01                              cmp ah,1;
+    53 00000041 7403                                je nu_e_par
+    54 00000043 881F                                    mov byte[edi],bl;
+    55 00000045 47                                      inc edi;
+    56                                              nu_e_par:
+    57 00000046 46                                  inc esi;linia asta se executa si daca e par si daca nu;
+    58                                             
+    59 00000047 E2E2                            loop for2
+    60                                          final_program:
+    61                                          
+    62                                          
+    63                                          
+    64                                          
+    65                                          
+    66                                          ; exit(0)
+    67 00000049 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    68 0000004B FF15[00000000]                  call    [exit]       ; call exit to terminate the program

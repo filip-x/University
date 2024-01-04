@@ -1,0 +1,22 @@
+merge_two_s_lists(list1,list2)
+{
+[], if both lists are empty
+list1,if list2 is empty
+list2,if list1 is empty 
+l1_1 U merge_two_s_lists(l1_2...l1_n, list2),if l1_1 < l2_1
+l2_1 U merge_two_s_lists(list1, l2_2....l2_n),if l1_1 > l2_1
+merge_two_s_lists(list1,l2_2....l2_n),if l1_1 = l2_1
+}
+
+merge_hetero(list1,rez)
+{
+[], if list1 is empty
+merge_hetero(l2...ln,rez),if l1 is not a list
+rez = merge_two_s_lists(l1,rez);merge_hetero(l2...ln,rez),l1 is a list 
+
+
+
+
+}
+
+

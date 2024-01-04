@@ -1,0 +1,8 @@
+<ul class="instruments">
+  <li *ngFor="let instrument of instruments"
+      [class.selected]="instrument === selectedInstrument"
+      (click)="onSelect(instrument)">
+    {{instrument.name}}
+  </li>
+</ul>
+<button (click)="goBack()" class = "right bottom" >Back</button>

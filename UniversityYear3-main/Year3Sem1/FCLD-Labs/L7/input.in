@@ -1,0 +1,11 @@
+main()
+{
+	var nr1
+	var nr2
+	Read>>nr1
+	Read>>nr2
+	if(nr1%2 == 0 and nr2%2 == 1) or (nr1%2 == 1 and nr2%2 ==0):
+		Write<<nr1+nr2
+	else:
+		Write<<0
+}

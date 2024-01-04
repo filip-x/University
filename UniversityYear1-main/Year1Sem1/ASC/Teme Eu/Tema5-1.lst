@@ -1,0 +1,54 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                      ;Two character strings S1 and S2 are given. Obtain the string D by concatenating the elements of S2 in reverse order and the elements found on even positions in S1
+    15                                      ;D: '5', '4', 'a', '2','b', '6', '8'
+    16 00000000 613435                      s2 db 'a','4','5'
+    17                                      lens2 equ $-s2
+    18 00000003 2B32326238365838            s1 db '+', '2', '2', 'b', '8', '6', 'X', '8'
+    19                                      lens1 equ $-s1
+    20 0000000B 00<rept>                    D times lens1+lens2 db 0
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24                                          ; ...
+    25 00000000 B903000000                      mov ecx,lens2 ; with exc we navigate through s2 the array starts from 0 up to 2 ( len is 3 tho)
+    26 00000005 BF00000000                      mov edi, 0 ; the index of D
+    27                                          start_loop:
+    28                                          
+    29 0000000A 8A81[FFFFFFFF]                      mov al,[s2 + ecx-1]
+    30 00000010 8887[0B000000]                      mov [D + edi], al 
+    31                                              
+    32 00000016 83C701                              add edi,1
+    33 00000019 E2EF                            loop start_loop ;can't use loop when ecx starts with 0 
+    34 0000001B B901000000                      mov ecx, 1
+    35                                          
+    36                                              start_loop2:
+    37 00000020 8A99[03000000]                          mov bl,[s1 + ecx]
+    38 00000026 889F[0B000000]                          mov [D +edi], bl
+    39 0000002C 83C701                                  add edi,1
+    40 0000002F 83C102                                  add ecx,2
+    41 00000032 83F908                                  cmp ecx,lens1
+    42 00000035 7302                                    jae end ; jump if above
+    43 00000037 EBE7                                    jmp start_loop2
+    44                                                  
+    45                                                  end:
+    46                                                  
+    47                                          
+    48                                          
+    49                                             
+    50                                      
+    51                                      
+    52                                          ; exit(0)
+    53 00000039 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    54 0000003B FF15[00000000]                  call    [exit]       ; call exit to terminate the program

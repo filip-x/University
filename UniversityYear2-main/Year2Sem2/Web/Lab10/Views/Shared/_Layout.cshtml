@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "_MainLayout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vacation</title>
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+    @Styles.Render("~/Content/main-style.css")
+</head>
+
+<body>
+    <img src="~/Content/util/book-backround-index.jpg" alt="Background">
+    <div id="message-box">
+        <span>
+            Enter a message here...
+        </span>
+        <button onclick="execute(this);">
+            Ok
+        </button>
+        <button id="no-button" onclick="cancelB(this);" style="display: none">
+            No
+        </button>
+    </div>
+
+    <div id="container">
+        @RenderBody()
+    </div>
+</body>
+</html>
+
+<script>
+    var boundF = null;
+    function cancelB(e) {
+        $(e).parent().toggleClass('msg-show');
+        boundF = null;
+        $("#no-button").css("display", 'none');
+
+    }
+    function execute(e) {
+        $(e).parent().toggleClass('msg-show');
+        if (boundF != null) {
+            boundF();
+            boundF = null;
+            $("#no-button").css("display", 'none');
+        }
+    }
+    function showMessage(text, boundFunc = null) {
+        boundF = boundFunc;
+        if (boundFunc != null) {
+            $("#no-button").css("display", 'block');
+        }
+        $("#message-box").toggleClass("msg-show", true);
+        $("#message-box span").html(text);
+    }
+
+    function __logOut() {
+        $.ajax({
+            type: 'POST',
+            url: '/Session/LogOut',
+            success: (data, status) => {
+                if (status === "success") {
+                    var information = data.split('\n');
+                    showMessage(information[1]);
+                    if (parseInt(information[0]) === 0) {
+                        setTimeout(() => {
+                                location.reload();
+                            },
+                            1000);
+                    }
+
+                }
+            },
+            xhrFields: {
+                withCredentials: true
+            }
+        });
+    }
+</script>

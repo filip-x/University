@@ -1,0 +1,61 @@
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+ul {
+  overflow-y: auto;
+  list-style: none;
+  width: 80%;
+  height: 50%;
+}
+.artists li {
+  cursor: pointer;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+.instruments li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.instruments li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+
+}
+.instruments .text {
+  position: relative;
+  top: -3px;
+}
+h2 {
+  text-align: center;
+}
+button {
+  margin-top: 20px;
+  font-family: Arial, serif;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: auto;
+}
+.right {
+  position: absolute;
+  right: calc(var(--unit));
+}
+.bottom {
+  position: absolute;
+  bottom: calc(var(--unit));
+}

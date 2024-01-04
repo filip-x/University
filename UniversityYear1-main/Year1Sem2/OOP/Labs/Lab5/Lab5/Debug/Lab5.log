@@ -1,0 +1,5 @@
+﻿  service.c
+D:\Facultate\Anul1Sem2\OOP\Labs\Lab5\Lab5\service.c(19,6): warning C4101: 'i': unreferenced local variable
+  test.c
+  Generating Code...
+  Lab5.vcxproj -> D:\Facultate\Anul1Sem2\OOP\Labs\Lab5\Debug\Lab5.exe

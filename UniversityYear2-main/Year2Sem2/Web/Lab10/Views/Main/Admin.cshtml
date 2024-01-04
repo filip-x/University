@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<style>
+
+    body {
+        margin: 0;
+    }
+
+        body img {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: -100;
+            top: 0;
+        }
+
+
+        #container h1 {
+            text-align: center;
+            color: yellowgreen;
+            font-size: 40px;
+            margin: 0;
+        }
+
+    #main-menu {
+        width: 100%;
+        height: 100%;
+    }
+
+    body ul {
+        margin: 0;
+        padding-left: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+        body ul li:hover {
+            font-weight: 1000;
+        }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    body ul li {
+        flex-grow: 1;
+        padding-top: 40px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 35px;
+    }
+</style>
+
+<h1>Menu Books - Administrator</h1>
+<div id="main-menu">
+    <ul>
+        <li><a href="/Main/Add">Add </a></li>
+        <!--<li><a href="/Main/Remove">Remove</a></li>
+        <li><a href="/Main/Modify">Modify</a></li>-->
+        <li><a href="/Main/Browse">Browse</a></li>
+    </ul>
+</div>

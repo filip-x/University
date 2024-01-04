@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Remove</title>
+</head>
+<body>
+<style>
+    body footer{
+        text-align: center;
+    }
+    body footer a{
+        text-decoration: none;
+        color: blanchedalmond;
+    }
+    #remove-form {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-family: "Times New Roman", sans-serif;
+        font-size: 20px;
+    }
+    #remove-form input, #remove-form textarea {
+        font-size: 20px;
+        font-family: "Times New Roman", sans-serif;
+        resize: none;
+    }
+    #_remove-submit{
+        font-size: 20px;
+        font-family:"Times New Roman", sans-serif ;
+    }
+    #remove-form div {
+        position: relative;
+        justify-content: space-evenly;
+        width: 65%;
+    }
+</style>
+<img src="util/book-backround-index.jpg" alt= "Backround">
+<div id="form-section">
+    <h1>Menu Books - Remove</h1>
+    <div id="main-menu">
+        <form id = "remove-form">
+            <div>
+                <label for = "_id">Id</label>
+                <input type = "number" id = "_id">
+                <br>
+                <button type = "button" id = "_remove-submit" onclick = "removeBook()">
+                    Delete
+                </button>
+            </div>
+            <span id = "msg"></span>
+        </form>
+        <footer>
+            <a href ="index.html"> Return to prev menu</a>
+        </footer>
+    </div>
+</div>
+
+<script>
+    function msg(m, c) {
+        console.log(m);
+        document.getElementById("msg").innerText = m;
+        document.getElementById("msg").style.color = c;
+        setTimeout(() => {
+            document.getElementById("msg").innerText = "";
+            document.getElementById("msg").style.color = "unset";
+        }, 2000);
+    }
+    function removeBook() {
+        let id = document.getElementById("_id").value;
+        if (id.length > 0) {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (this.readyState === 4) {
+                    if(this.status === 200) {
+                        let ret = this.responseText.substr(1);
+                        let retVal = this.responseText.substr(0, 1);
+                        if (retVal === "0") {
+                            msg(ret, "blue");
+                        } else {
+                            msg(ret, "red");
+                        }
+
+                    } else {
+                        msg("The Book couldn't be successfully deleted!", "red");
+                    }
+                }
+            };
+            xmlHttp.open("GET", `../server.php?action=delete&id=${id}`, true);
+            xmlHttp.send();
+        }
+    }
+</script>
+</body>
+</html>

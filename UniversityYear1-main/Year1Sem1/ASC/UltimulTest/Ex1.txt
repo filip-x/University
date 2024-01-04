@@ -1,0 +1,8 @@
+Addition on unsigned values:
+	If 2 numbers exceed the reserved space then the Carry Flag will be set to 1
+	for ex : 250+50=300 > 256 si it's over 8 bytes this means that the Carry flag will be set to 1
+Substruction on unsigned values:
+	If 2 numbers exceed the reserved space then the Carry flag will be set to 1
+	for ex: substract from 250, 251()
+Addition on signed values:
+	If 2 number

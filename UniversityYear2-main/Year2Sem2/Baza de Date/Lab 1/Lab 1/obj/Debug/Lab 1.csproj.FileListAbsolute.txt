@@ -1,0 +1,7 @@
+D:\Facultate an2\Semestru2\Baza de Date\Lab 1\Lab 1\bin\Debug\Lab 1.exe.config
+D:\Facultate an2\Semestru2\Baza de Date\Lab 1\Lab 1\bin\Debug\Lab 1.exe
+D:\Facultate an2\Semestru2\Baza de Date\Lab 1\Lab 1\bin\Debug\Lab 1.pdb
+D:\Facultate an2\Semestru2\Baza de Date\Lab 1\Lab 1\obj\Debug\Lab 1.csprojAssemblyReference.cache
+D:\Facultate an2\Semestru2\Baza de Date\Lab 1\Lab 1\obj\Debug\Lab 1.csproj.CoreCompileInputs.cache
+D:\Facultate an2\Semestru2\Baza de Date\Lab 1\Lab 1\obj\Debug\Lab 1.exe
+D:\Facultate an2\Semestru2\Baza de Date\Lab 1\Lab 1\obj\Debug\Lab 1.pdb

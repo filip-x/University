@@ -1,0 +1,28 @@
+h1 {
+  color: #999;
+  margin-bottom: 0;
+  text-align: center;
+}
+h2 {
+  font-size: 2em;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: calc(var(--unit) * 40);
+  height: calc(var(--unit) * 40);
+  border: none;
+}
+
+
+#container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}

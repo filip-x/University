@@ -1,0 +1,202 @@
+Software engineering is a modeling activity
+Software engineers deal with complexity through modeling, by focusing at any one time on only the relevant details and ignoring everything else
+Lecture 1:
+	Important Software Engineering Principles
+		Rigor and formality- strict precision(mathematical proofs) and highest degree of rigor
+		Separation of concerns- deal with different aspects of a problem separately and many aspects are related and interpendent
+		Modularity- divide system into mdules to reduce complexity(decompose,compose,understand,modify)
+		Abstraction- identify the important aspects and ignore the details
+		Anticipation of change- prepare software for change
+		Generality- a general solution is more likely ro be reusable, general solutions may be less efficient
+		Incrementality
+	
+Lecture 2:
+
+-Software engineering:
+	SE is a problem solving activity
+	SE is a knowledge acquisition activity	
+	SE is a rationale driven activity
+
+You can deal with complexity in 3 ways :
+	Abstraction
+	Decomposition
+	Hierarchy
+
+With the help of abstractisation: 
+	We have classes and objects
+	We have chunks
+
+
+Another way to deal with complexity is to provide relationships between these chunks
+One of the most importnat relationships is hieracrchy: "part of" and "is-kind-of" hierarchy
+ 
+
+SYSTEM MODELS AND VIEWS
+	A model is an abstraction describing a system or a subsystem
+	A view depicts selected aspects of a model
+	A notation is a set of graphical or textual rules for depicting models and views
+
+UML Nontation for system models and views 
+
+System----(Described by)---- Model----(Described by)----View
+
+UML First Pass:
+	Use case Diagrams
+		Describe the functional behavior of the system as seen by the user 
+	Class Diagrams
+		Describe the static structure of the system: obj attr, associations
+	Sequence Diagrams
+		Describe the dynamic behavior between obj of the system 
+	Statechart diagrams
+		Describe the dynamic behavior of an individual obj
+	Activity diagrams
+		Describe the dynamic behavior of the system, in particular the workflow
+UML COnventions:(Nodes and edges)
+	Nodes are entities and drawn as rectangles or ovals
+	Rectangles denote classes or instances
+	Ovals denote functions
+Names of Classes are not underlined SimpleWatch
+Names of Instances are underlined myWatch:SimpleWatch
+An edge between two nodes denotes a relationship between the corresponding entities
+
+Functional model : Use Case Diagram
+Object model: Class Diagram
+Dynamic model: Sequence diagrams, statechart
+
+Lecture 4:
+
+USE CASE
+
+Use Case Writing Guide 
+	-Use cases should e named with verb phrases. The name of the yse case should indicate what the user is trying to accomplish 
+	-Actors should be named with noun phrases
+	-The boundary of the system should be clear. Steps accomplished by the actor and steps accomplished by the system should be distinguished
+	(system actions are indented to the right)
+	-Use case steps in the flow of events should pe phrased in athe active voice. This makes it explicit who accomplished the step
+	-The casual relationship between successive steps should be clear
+	-A use case should desribe a complete user transaction
+	-Exceptions should be described separately
+	-A use case should not describe the user interface of the system.This takes away the focus from the actual steps accomplished by the user and is better addressed with visual mock-ups
+	-A use case description should not exceed 2-3 pages in len.
+
+Order of steps when formulating use cases:
+	First step: Name the use case
+		Use case Name: ReportEmergency
+	Second step: Find the actors
+		Generalize the concrete names(BOB) to participating actors( Field Officer)
+		Participating actors
+	Third step: Concentrate on the flow of events
+		Use informal natural language 
+
+Types of use case associations:
+	Includes 
+	Extends 
+	Generalization
+
+1.Includes:
+	Problem: a function in the original problem statement is too complex 
+	Solution: Describe the function as the aggregation of a set of simple functions. The associated use case is decomposed into shorted use cases
+2.Extends:
+	Problem: The functionality in the original problem statement needs to be extended
+	Solution: An extend association from use case A to use caseB 
+3.Generalization:
+	Problem: We want to factor out common but not indentical behavior
+	Solution: The child use cases inherit the behavior and meaning of the parent use case and add or override some behavior
+
+Lecture 5:
+
+Sequence diagrams:
+	The first column should correspond to the actor who initated the use case
+	The second column should be a boundary obj( that the acto used to initaite the use case)
+	The third column should be the control obj that manages the rest of the use case
+
+Lecture 6:
+
+Application programmer's interface (API)
+
+
+Lecture 8:
+
+The Proxy Pattern:
+	TheProxyObject class acts on behalf of a RealObject class Both classes implement the same interface The ProxyObject stores a subset of the attributes of the RealObject
+	The ProxyObject handles certain requests completely (eg determining the size of an image), whereas others are delegated to the RealObject After delegation, the RealObject is created and loaded in memory
+The Beridge Pattern:
+	Bridge is used when we need to decouple an abstraction from its implementation so that the two can vary independently The DrawAPI interface acta as a bridge implementer
+	This pattern involves an interface which acts as a bridge which makes the functionality of concrete classes independent from interface implementer classes Both types of classes can be altered structurally without affecting each otherThe concrete classes
+The Composite Pattern
+The Observer Pattern:
+	Observer pattern is used when there is one to many relationship between objects such as if one object is modified, its dependent objects are to be notified automatically Observer pattern falls under behavioral pattern category
+	
+Lecture 9:
+Contracts:
+	Invariant:
+		An invariant is a predicate that is always true for all instances of a class. Invariants are constraints associated with classes or interfaces. Invariants are used to specify consistency constraints among class attributes.
+	Precondition:
+		A precondition is a predicate that must be true before an operation is invoked Preconditions are associated with a specific operation Preconditions are used to specify constraints that a class user must meet before calling the operation
+	Postcondition:
+		A postcondition is a predicate that must be true after an operation is invoked Postconditions are associated with a specific operation Postconditions are used to specify constraints that the class implementor and the class extender must ensure after the invocation of the operation
+
+Three main approaches to documanting obj design:
+	Self contained ODD generated from model The first approach is to document the object design model the same way we documented the analysis model or the system design model
+	ODD as extension of the RAD . The second approach is to treat the object design model as an extension of the analysis model
+	ODD embedded into source code . The third approach is to embed the ODD into the source code. As in the first approach, we represent the
+
+Lecture 10:
+	Definition of a sublasses: 
+		Java keywoard: extends
+	Overwriting of methods is not allowed:
+		Java keywoard: final
+	Overwriting of methods:
+		No keywoard necesarry
+	Specification of an interface:
+		Java keywoard: abstract, interface
+
+Unidirectional one-to-one asscociation:
+	EX: Advertiser---->Account
+Bidirectional one-to-one assciation
+	EX: Section<---->PCMember
+Bidirectional one-to-many association
+	EX: Conference----> Author
+Bidirectional many-to-many association
+	Author<------>Abstract
+
+
+Implementing a Contract:
+	Check each prediction:
+		Before the beginning of the method with a test to check the precondition for that method
+		Raise an exception if the precondition evaluates to false
+	Cehck each postcondition:
+		At the end of the method write a test to check of postcondition
+		Raise an exception if the postcondtion evaluates to false.If more than one postcondition is not satisfied, raise an eception only for the first violation
+	Check each invariant:
+		Check invariants at the same time when checking preconditions and when checking posconditions
+	Deal with inheritance:
+		Add the checking code for preconditions and postcanditions also into methods that can be called from the class
+
+Lecture 11:
+	Testing:
+		Is the process of finding differences between th ecpected behavior specified by system models and the observed behabior of the implemented system
+	Unit Testing:
+		Finds differences between a spcification of an obj and its realization as a component
+	Structural Testing: 
+		Finds differences between the system design model and a subset of integrated subsystems
+	Functional Testing:
+		Finds differences between the use case model and the system.
+Back-box test: 
+	test the functional model
+White-box test:
+	test the dynamic model
+
+Lecture 12:
+	Integration Testing:
+		The Integration testing strategy determines the order in which the subsystems are selected for testing and intrgration
+	Use analysis knowledge about functional requirements(black-box testing)
+		Use cases
+		Expected input data 
+		Invalid input data
+	Use design knowledge about system structure, algorithms, data structures (white-box testing)
+		Control structures
+		Data structures
+	Use implementation knowledge about algorithms and data structures
+		Force a division by zero
+		If the upper bound of an array is 10 then use 11 as index

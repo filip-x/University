@@ -1,0 +1,2058 @@
+ID: 
+11
+Execution Stack: 
+Name: a Type: Ref(int)
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: a Type: Ref(int)
+
+Symbolic Table: 
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: a Type: Ref(int)
+
+Symbolic Table: 
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: b Type: Ref(int)
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: b Type: Ref(int)
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: v Type: int
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: v Type: int
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+a =new Value: 0
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+a =new Value: 0
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+b =new Value: 0
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+b =new Value: 0
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*a = Value: 1
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*a = Value: 1
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*b = Value: 2
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*b = Value: 2
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+app.model.statement.ConditionalStatement@2ef1e4fa
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+app.model.statement.ConditionalStatement@2ef1e4fa
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+(IF(*Key: a < *Key: b) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+(IF(*Key: a < *Key: b) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+(IF(*Key: b - Value: 2 > *Key: a) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+(IF(*Key: b - Value: 2 > *Key: a) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=200
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=200
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=200
+
+Out: 
+100, 200, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+Name: a Type: Ref(int)
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: a Type: Ref(int)
+
+Symbolic Table: 
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: a Type: Ref(int)
+
+Symbolic Table: 
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: b Type: Ref(int)
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: b Type: Ref(int)
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: b Type: Ref(int)
+
+Symbolic Table: 
+a=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+Name: v Type: int
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: v Type: int
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+Name: v Type: int
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+a =new Value: 0
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+a =new Value: 0
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+a =new Value: 0
+
+Symbolic Table: 
+a=ID: 0
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+b =new Value: 0
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+b =new Value: 0
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+b =new Value: 0
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 0
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*a = Value: 1
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*a = Value: 1
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*a = Value: 1
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=0
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+*b = Value: 2
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*b = Value: 2
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+*b = Value: 2
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=0
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@2ef1e4fa
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+app.model.statement.ConditionalStatement@2ef1e4fa
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+app.model.statement.ConditionalStatement@2ef1e4fa
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+(IF(*Key: a < *Key: b) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+(IF(*Key: a < *Key: b) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=0
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+app.model.statement.ConditionalStatement@306a30c7
+print(Key: v)
+
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+app.model.statement.ConditionalStatement@306a30c7
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+(IF(*Key: b - Value: 2 > *Key: a) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+(IF(*Key: b - Value: 2 > *Key: a) THEN(v=Value: 100)ELSE(v=Value: 200))
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=100
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=200
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+print(Key: v)
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=200
+
+Out: 
+100, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+
+ID: 
+11
+Execution Stack: 
+
+Symbolic Table: 
+a=ID: 1
+b=ID: 2
+v=200
+
+Out: 
+100, 200, 
+File Table: 
+
+Heap Table: 
+1=1
+2=2
+

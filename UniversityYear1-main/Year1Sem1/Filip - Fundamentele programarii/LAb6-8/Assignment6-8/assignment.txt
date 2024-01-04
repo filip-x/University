@@ -1,0 +1,4 @@
+0-Clean-10
+1-Wash-7
+2-Wash-11
+3-Surf-8

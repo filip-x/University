@@ -1,0 +1,18 @@
+LOOP
+==================================================
+n - input size
+T(n) - r. operation for input size "n"
+T(n)= $(sum from i=1 until n) 1 = n  in O(n)  in Omega(n)
+                                       |highy bound   |low bound => Theta(n)
+
+BestCase(T(n)): T(n)=1 the first element
+WorstCase(T(n)): T(n)=n the last element
+AvrageCase(T(n)): T(n)=(1+2+...+n)/n=[n(n+1)]/2n=(n+1)/2 bcs we  have n runes
+
+NESTED LOOPS
+==================================================
+n^2-input size
+T(n)= $(sum for i=1 until n^2) i(steps) = 1+2+3+...+n^2 =[n^2(n^2+1)]/2 in O(n^4)
+n=10 -> 1 sec 
+n=20 -> ?
+T(2)= 16

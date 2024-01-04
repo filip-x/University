@@ -1,0 +1,118 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import scanf msvcrt.dll
+    11                                  import printf msvcrt.dll
+    12                                  import fscanf msvcrt.dll
+    13                                  import fopen msvcrt.dll
+    14                                  import fclose msvcrt.dll
+    15                                  import fprintf msvcrt.dll
+    16                                  extern scanf, printf, fscanf, fopen, fclose, fprintf
+    17                                  
+    18                                  ; our data is declared here (the variables needed by our program)
+    19                                  segment data use32 class=data
+    20                                      ; ...
+    21 00000000 496E74726F64756365-         afisare1 db "Introduceti numele fisierului: ", 0
+    21 00000009 7469206E756D656C65-
+    21 00000012 20666973696572756C-
+    21 0000001B 75693A2000         
+    22 00000020 496E74726F64756365-         afisare2 db "Introduceti un numar: ", 0
+    22 00000029 746920756E206E756D-
+    22 00000032 61723A2000         
+    23 00000037 257300                      format_citire1 db "%s", 0
+    24 0000003A 256400                      format_citire2 db "%d", 0
+    25 0000003D 7700                        access db "w", 0
+    26 0000003F 00000000                    n dd 0
+    27 00000043 <res 00000064>              nume_fisier resb 100
+    28 000000A7 00000000                    desc dd 0
+    29 000000AB 01000000                    semn dd 1
+    30 000000AF 0A000000                    ten dd 10
+    31                                      
+    32                                  
+    33                                  ; our code starts here
+    34                                  segment code use32 class=code
+    35                                      start:
+    36                                          ; ...
+    37                                          ; Citire nume fisier
+    38 00000000 68[00000000]                    push afisare1
+    39 00000005 FF15[00000000]                  call [printf]
+    40 0000000B 83C404                          add esp, 4
+    41                                          
+    42                                          ;
+    43 0000000E 68[43000000]                    push dword nume_fisier
+    44 00000013 68[37000000]                    push dword format_citire1
+    45 00000018 FF15[00000000]                  call [scanf]
+    46 0000001E 83C408                          add esp, 4 * 2
+    47                                          
+    48                                          ; Citire numar n
+    49 00000021 68[20000000]                    push dword afisare2
+    50 00000026 FF15[00000000]                  call [printf]
+    51 0000002C 83C404                          add esp, 4
+    52                                          ; ..
+    53 0000002F 68[3F000000]                    push dword n
+    54 00000034 68[3A000000]                    push dword format_citire2
+    55 00000039 FF15[00000000]                  call [scanf]
+    56 0000003F 83C408                          add esp, 4 * 2
+    57                                          ; Deschidere fisier
+    58 00000042 68[3D000000]                    push access
+    59 00000047 68[43000000]                    push nume_fisier
+    60 0000004C FF15[00000000]                  call [fopen]
+    61 00000052 83C408                          add esp, 4 * 2
+    62 00000055 A3[A7000000]                    mov [desc], eax
+    63                                          
+    64 0000005A 833D[3F000000]00                cmp dword [n], 0 ; daca numarul e negativ salvam asta in semn si il transformam in numarul pozitiv
+    65 00000061 7D1A                            jge .pozitiv ; gr or equal
+    66 00000063 C705[AB000000]FFFF-             mov dword [semn], -1
+    66 0000006B FFFF               
+    67 0000006D A1[3F000000]                    mov eax, [n]
+    68 00000072 F72D[AB000000]                  imul dword [semn]; inmultim cu -1 daca este negativ pentru a il face pozitiv/  nu are efect asupra problemei daca e negativ 
+    69 00000078 A3[3F000000]                    mov [n], eax;punem numarul inapoi pentru a fi prelucrat 
+    70                                          .pozitiv:
+    71                                          
+    72 0000007D A1[3F000000]                    mov eax, [n]
+    73 00000082 B900000000                      mov ecx, 0
+    74                                          .repeta1: ;introducem toate cifrele  din numar pe  stiva,iar apoi o sa apelam doar pe cele de pe pozitiile pare 
+    75 00000087 BA00000000                          mov edx, 0; pentru a face div cu 10 ( sa luam ultima cifra)
+    76 0000008C F735[AF000000]                      div dword [ten] ; vom avea rezultautl in eax si restul in edx = restul adica ultima cifra din numar 
+    77 00000092 52                                  push edx
+    78 00000093 41                                  inc ecx
+    79 00000094 83F800                              cmp eax, 0
+    80 00000097 75EE                                jne .repeta1
+    81                                              ;idiv 10
+    82                                          
+    83 00000099 B800000000                      mov eax, 0
+    84                                          .repeta2: ; luam toate cifrele de pe stiva, dar le introducem in numar doar pe cele de pe pozitii pare (din doua in doua, incepand cu prima)
+    85 0000009E F725[AF000000]                      mul dword [ten]; refacem numarul doar cu numerle  de pe pozitiile pare 
+    86 000000A4 5B                                  pop ebx ;preluam numarul din stiva 
+    87 000000A5 01D8                                add eax, ebx
+    88 000000A7 5B                                  pop ebx ; sarim un element ca sa ramana in eax doar cele de pe pozitiile pare 
+    89 000000A8 49                                  dec ecx 
+    90 000000A9 83F900                              cmp ecx, 0; ecx contor de cifre 
+    91 000000AC 7402                                je .exitRepeta2
+    92 000000AE E2EE                                loop .repeta2
+    93                                          .exitRepeta2
+    93          ******************       warning: label alone on a line without a colon might be in error [-w+orphan-labels]
+    94                                          
+    95 000000B0 F72D[AB000000]                  imul dword [semn] ; readaugam semnul la numarul final
+    96                                          
+    97                                          ; scriem in fisier
+    98 000000B6 50                              push eax
+    99 000000B7 68[3A000000]                    push dword format_citire2
+   100 000000BC FF35[A7000000]                  push dword [desc]
+   101 000000C2 FF15[00000000]                  call [fprintf]
+   102 000000C8 83C404                          add esp, 4
+   103                                          
+   104                                          ; inchidem fisierul
+   105 000000CB FF35[A7000000]                  push dword [desc]
+   106 000000D1 FF15[00000000]                  call [fclose]
+   107 000000D7 83C404                          add esp, 4
+   108                                          .end:
+   109                                          ; exit(0)
+   110 000000DA 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   111 000000DC FF15[00000000]                  call    [exit]       ; call exit to terminate the program

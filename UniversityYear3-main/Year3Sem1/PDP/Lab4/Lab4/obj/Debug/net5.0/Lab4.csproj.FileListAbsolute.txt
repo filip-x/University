@@ -1,0 +1,16 @@
+D:\Facultte\PDP\Lab4\Lab4\bin\Debug\net5.0\Lab4.exe
+D:\Facultte\PDP\Lab4\Lab4\bin\Debug\net5.0\Lab4.deps.json
+D:\Facultte\PDP\Lab4\Lab4\bin\Debug\net5.0\Lab4.runtimeconfig.json
+D:\Facultte\PDP\Lab4\Lab4\bin\Debug\net5.0\Lab4.runtimeconfig.dev.json
+D:\Facultte\PDP\Lab4\Lab4\bin\Debug\net5.0\Lab4.dll
+D:\Facultte\PDP\Lab4\Lab4\bin\Debug\net5.0\ref\Lab4.dll
+D:\Facultte\PDP\Lab4\Lab4\bin\Debug\net5.0\Lab4.pdb
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.csproj.AssemblyReference.cache
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.GeneratedMSBuildEditorConfig.editorconfig
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.AssemblyInfoInputs.cache
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.AssemblyInfo.cs
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.csproj.CoreCompileInputs.cache
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.dll
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\ref\Lab4.dll
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.pdb
+D:\Facultte\PDP\Lab4\Lab4\obj\Debug\net5.0\Lab4.genruntimeconfig.cache

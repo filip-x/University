@@ -1,0 +1,51 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14 00000000 5C89E5                      s DB 01011100b, 10001001b, 11100101b 
+    15                                      len equ $-s
+    16 00000003 00<rept>                    mirror times len db 0
+    17                                  ; our code starts here
+    18                                  segment code use32 class=code
+    19                                      start:
+    20                                          ; ...
+    21 00000000 BE[02000000]                    mov ESI, s + len - 1
+    22 00000005 BF[03000000]                    mov EDI, mirror
+    23 0000000A B903000000                      mov ECX, len
+    24                                          
+    25                                          for1:
+    26 0000000F FD                                  std ; We make it so ESI decreases
+    27 00000010 AC                                  lodsb ; Load in AL and decrease ESI
+    28 00000011 51                                  push ECX ; We need ECX for the mirroring
+    29                                              ; mirror starts here
+    30 00000012 B300                                mov BL,byte 0
+    31 00000014 B908000000                          mov ECX, 8
+    32                                              ; We mirror the number by putting the least significant bit into CF and then adding it to BL and shifting it to make space. 
+    33                                              ; In the end we get the mirrored byte
+    34                                              for2:
+    35 00000019 D0E3                                    shl BL, 1
+    36 0000001B D0E8                                    shr AL, 1
+    37 0000001D 80D300                                  adc BL, 0
+    38 00000020 E2F7                                    loop for2 ; repeats 8 times, based on ecx
+    39 00000022 88D8                                mov AL, BL
+    40                                              ; mirror ends above
+    41                                              ; we need the position we were left at
+    42 00000024 59                                  pop ECX
+    43 00000025 FC                                  cld ; we set DF to 0 so EDI increases
+    44 00000026 AA                                  stosb ; we move from AL to the mirror string
+    45 00000027 E2E6                                loop for1 ; we repeat len times (based on ECX)
+    46                                              
+    47                                              
+    48                                          
+    49                                          ; exit(0)
+    50 00000029 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    51 0000002B FF15[00000000]                  call    [exit]       ; call exit to terminate the program

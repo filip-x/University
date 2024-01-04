@@ -1,0 +1,119 @@
+     1                                  bits 32 
+     2                                  
+     3                                  
+     4                                  global start        
+     5                                  
+     6                                  
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import scanf msvcrt.dll
+    10                                  import printf msvcrt.dll
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fscanf msvcrt.dll
+    14                                  import fwrite msvcrt.dll
+    15                                  import fread msvcrt.dll
+    16                                  extern scanf 
+    17                                  extern printf 
+    18                                  extern fopen
+    19                                  extern fclose
+    20                                  extern fscanf
+    21                                  extern fwrite
+    22                                  extern fread
+    23                                                           
+    24                                  
+    25                                  segment data use32 class=data
+    26 00000000 00000000                    format_descriptor dd 0
+    27 00000004 7200                        format_acces db "r",0
+    28 00000006 6669736965725F7072-         format_nume db "fisier_prob_adi.txt",0
+    28 0000000F 6F625F6164692E7478-
+    28 00000018 7400               
+    29 0000001A 257300                      format_afisare db "%s",0
+    30 0000001D <res 0000000A>              cuvand resb 10
+    31 00000027 436974657374652075-         citeste_nr db "Citeste un nr: ",0
+    31 00000030 6E206E723A2000     
+    32 00000037 256400                      format_nr db "%d",0
+    33 0000003A 00000000                    nr dd 0
+    34                                      
+    35                                  
+    36                                  segment code use32 class=code
+    37                                      start:
+    38                                          
+    39 00000000 68[04000000]                    push  dword format_acces
+    40 00000005 68[06000000]                    push  dword format_nume
+    41 0000000A FF15[00000000]                  call [fopen]
+    42 00000010 83C408                          add esp,4*2
+    43                                          
+    44 00000013 A3[00000000]                    mov [format_descriptor],eax
+    45 00000018 83F800                          cmp eax,0
+    46 0000001B 0F848F000000                    je final
+    47                                          
+    48 00000021 68[1D000000]                    push dword cuvand
+    49 00000026 68[1A000000]                    push dword format_afisare
+    50 0000002B FF35[00000000]                  push dword[format_descriptor]
+    51 00000031 FF15[00000000]                  call [fscanf]
+    52 00000037 83C40C                          add esp,4*3
+    53                                          
+    54 0000003A 68[27000000]                    push dword citeste_nr
+    55 0000003F FF15[00000000]                  call [printf]
+    56 00000045 83C404                          add esp,4*1
+    57                                          
+    58 00000048 68[3A000000]                    push  dword nr 
+    59 0000004D 68[37000000]                    push  dword format_nr
+    60 00000052 FF15[00000000]                  call [scanf]
+    61 00000058 83C408                          add esp,4*2
+    62                                          
+    63 0000005B B900000000                      mov ecx ,0
+    64                                          repete:
+    65 00000060 BA00000000                      mov edx,0
+    66 00000065 89C8                            mov eax,ecx
+    67 00000067 F735[3A000000]                  div dword[nr]
+    68 0000006D 83FA00                          cmp edx,0
+    69 00000070 751D                            jne jump_over_print
+    70 00000072 BB00000000                      mov ebx,0
+    71 00000077 60                              pusha
+    72 00000078 68[1D000000]                    push dword cuvand
+    73 0000007D 68[1A000000]                    push dword format_afisare
+    74 00000082 FF15[00000000]                  call [printf]
+    75 00000088 83C408                          add esp,4*2
+    76 0000008B 61                              popa
+    77 0000008C 41                              inc ecx
+    78 0000008D EB01                            jmp final2
+    79                                          
+    80                                          jump_over_print:
+    81 0000008F 41                              inc ecx
+    82                                          
+    83                                          final2:
+    84 00000090 51                              push ecx
+    85 00000091 68[1D000000]                    push dword cuvand
+    86 00000096 68[1A000000]                    push dword format_afisare
+    87 0000009B FF35[00000000]                  push dword[format_descriptor]
+    88 000000A1 FF15[00000000]                  call [fscanf]
+    89 000000A7 83C40C                          add esp,4*3
+    90 000000AA 59                              pop ecx
+    91                                          
+    92 000000AB 83F8FF                          cmp eax,-1
+    93 000000AE 75B0                            jne repete
+    94                                          
+    95                                          
+    96                                          
+    97                                          
+    98                                          
+    99                                          
+   100                                          
+   101                                          
+   102                                          
+   103                                          
+   104                                          
+   105                                          
+   106                                          
+   107                                          
+   108                                          
+   109                                          
+   110                                          
+   111                                          
+   112                                      
+   113                                          final:
+   114                                          
+   115 000000B0 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   116 000000B2 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

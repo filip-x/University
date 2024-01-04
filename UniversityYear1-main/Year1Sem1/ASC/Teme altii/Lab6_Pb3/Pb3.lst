@@ -1,0 +1,102 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                  
+    15 00000000 0A09020704030C0B08-         s dd 0702090Ah, 0B0C0304h, 05060108h;
+    15 00000009 010605             
+    16                                      len_s equ ($-s)/4;len s
+    17 0000000C <res 00000006>              rez resb (len_s)*2;reserve space for the elements
+    18                                      len_rez equ ($-rez);len rez
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; ...
+    23                                          
+    24 00000000 BE[00000000]                    mov esi,s;
+    25 00000005 BF[0C000000]                    mov edi,rez
+    26 0000000A B903000000                      mov ecx,len_s;
+    27                                          
+    28                                          for1:
+    29 0000000F AC                                  lodsb ; punem 0A in al
+    30 00000010 88C3                                mov bl,al; mutam pe al in bl sa facem loc pentru urmatorul numar
+    31 00000012 AC                                  lodsb; aducem urmatorul numar in al
+    32                                              
+    33 00000013 C0E004                              shl al,4; shiftm al doilea nr in stanga
+    34 00000016 08C3                                or bl,al; punem impreuna numerele 
+    35 00000018 881F                                mov [edi],bl;
+    36 0000001A 47                                  inc edi;
+    37                                             
+    38 0000001B AC                                  lodsb;
+    39 0000001C 88C3                                mov bl,al;
+    40 0000001E AC                                  lodsb;
+    41 0000001F C0E004                              shl al,4;
+    42 00000022 08C3                                or bl,al;
+    43 00000024 881F                                mov [edi],bl;
+    44 00000026 47                                  inc edi;
+    45 00000027 E2E6                                loop for1
+    46                                              
+    47                                              
+    48                                             ;we have the results in rez now how have to put them in asceding order;
+    49 00000029 B905000000                          mov ecx,len_rez-1; the len of the rez -1, this register will pe pushed on the stack and poped after the second for will end 
+    50 0000002E BB05000000                          mov ebx,len_rez-1; we keep count so that we don't forget where we are 
+    51 00000033 BE[0C000000]                        mov esi,rez; primul  element din rez
+    52                                             
+    53                                             
+    54                                              
+    55                                              for_2:
+    56                                                  
+    57 00000038 51                                      push ecx;we push so that we can take second for value
+    58 00000039 89D9                                    mov ecx,ebx; we moved the value of ebx into ecx so that we can iterate trought the second array (here same array)
+    59 0000003B 89F7                                    mov edi,esi;
+    60 0000003D 47                                      inc edi;
+    61                                                  for_3:
+    62                                                      
+    63 0000003E 8A17                                        mov dl,[edi]; we put the value of edi in edx so that we can comparethe values 
+    64 00000040 3816                                        cmp [esi],dl; we cmp if the element before is smaller the the element that comes next 
+    65 00000042 7C06                                        jl no_swap; we jump over this for if the element is not bigger then the next one
+    66                                                      ; so if we want to swap we mov esi into dx and in dh and dl we have the other number so we just take what it's in dl and dh and mov it in esi;
+    67 00000044 8A36                                        mov dh,[esi];
+    68 00000046 8816                                        mov [esi],dl; 
+    69 00000048 8837                                        mov [edi],dh;we made the swap 
+    70                                       
+    71                                                      no_swap:
+    72 0000004A 47                                          inc edi;
+    73                                                      
+    74 0000004B E2F1                                        loop for_3
+    75                                                      
+    76 0000004D 59                                          pop ecx;
+    77 0000004E 4B                                          dec ebx; 
+    78                                                      
+    79 0000004F 46                                      inc esi; we inc esi so that we can go to the next elementt
+    80 00000050 E2E6                                    loop for_2
+    81                                                  
+    82                                                  ;23 47 12
+    83                                                  ;
+    84                                              
+    85                                              
+    86                                  
+    87                                              
+    88                                              
+    89                                              
+    90                                              
+    91                                              
+    92                                              
+    93                                              
+    94                                              
+    95                                              
+    96                                              
+    97                                              
+    98                                             
+    99                                          ; exit(0)
+   100 00000052 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   101 00000054 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

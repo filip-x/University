@@ -1,0 +1,8 @@
+def __init__(self, nrv=0):# nrv=number vertices
+        self.vertex_number = 0
+        self.edge_number = 0
+        self.out_vertices = {}
+        self.in_vertices = {}
+        self.price = {}# this is the cost
+        for vertex in range(nrv):
+            self.add_vertex(vertex)

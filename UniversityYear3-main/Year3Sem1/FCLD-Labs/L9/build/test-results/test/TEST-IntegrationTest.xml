@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="IntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-17T09:43:37" hostname="DESKTOP-M47MEF4" time="0.017">
+  <properties/>
+  <testcase name="g1_test()" classname="IntegrationTest" time="0.017"/>
+  <system-out><![CDATA[Error
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

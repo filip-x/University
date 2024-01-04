@@ -1,0 +1,8 @@
+Fundamentele Programarii:
+1. python is a dynamically typed language 
+	static- C, C++, Java, C#, Pascal 
+	dynamic- Python, JavaScript
+
+type( ex. string. integer)
+	-domain
+	-operations

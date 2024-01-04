@@ -1,0 +1,123 @@
+/* A Bison parser, made by GNU Bison 2.3.  */
+
+/* Skeleton interface for Bison's Yacc-like parsers in C
+
+   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Free Software Foundation, Inc.
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2, or (at your option)
+   any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.  */
+
+/* As a special exception, you may create a larger work that contains
+   part or all of the Bison parser skeleton and distribute that work
+   under terms of your choice, so long as that work isn't itself a
+   parser generator using the skeleton or a modified version thereof
+   as a parser skeleton.  Alternatively, if you modify or redistribute
+   the parser skeleton itself, you may (at your option) remove this
+   special exception, which will cause the skeleton and the resulting
+   Bison output files to be licensed under the GNU General Public
+   License without this special exception.
+
+   This special exception was added by the Free Software Foundation in
+   version 2.2 of Bison.  */
+
+/* Tokens.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+   /* Put the tokens into the symbol table, so that GDB and other debuggers
+      know about them.  */
+   enum yytokentype {
+     BEGINN = 258,
+     CONST = 259,
+     DO = 260,
+     ELSE = 261,
+     END = 262,
+     IF = 263,
+     PRINT = 264,
+     PROGRAM = 265,
+     READ = 266,
+     THEN = 267,
+     VAR = 268,
+     WHILE = 269,
+     ID = 270,
+     CONST_INT = 271,
+     CONST_REAL = 272,
+     CONST_CAR = 273,
+     CONST_SIR = 274,
+     CHAR = 275,
+     INTEGER = 276,
+     REAL = 277,
+     ATRIB = 278,
+     NE = 279,
+     LE = 280,
+     GE = 281,
+     MOD = 282,
+     DIV = 283,
+     OR = 284,
+     AND = 285,
+     NOT = 286
+   };
+#endif
+/* Tokens.  */
+#define BEGINN 258
+#define CONST 259
+#define DO 260
+#define ELSE 261
+#define END 262
+#define IF 263
+#define PRINT 264
+#define PROGRAM 265
+#define READ 266
+#define THEN 267
+#define VAR 268
+#define WHILE 269
+#define ID 270
+#define CONST_INT 271
+#define CONST_REAL 272
+#define CONST_CAR 273
+#define CONST_SIR 274
+#define CHAR 275
+#define INTEGER 276
+#define REAL 277
+#define ATRIB 278
+#define NE 279
+#define LE 280
+#define GE 281
+#define MOD 282
+#define DIV 283
+#define OR 284
+#define AND 285
+#define NOT 286
+
+
+
+
+#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+typedef union YYSTYPE
+#line 21 "sspascal.y"
+{
+  	int l_val;
+	char *p_val;
+}
+/* Line 1529 of yacc.c.  */
+#line 116 "y.tab.h"
+	YYSTYPE;
+# define yystype YYSTYPE /* obsolescent; will be withdrawn */
+# define YYSTYPE_IS_DECLARED 1
+# define YYSTYPE_IS_TRIVIAL 1
+#endif
+
+extern YYSTYPE yylval;
+

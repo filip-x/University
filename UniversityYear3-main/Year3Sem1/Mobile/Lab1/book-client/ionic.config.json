@@ -1,0 +1,7 @@
+{
+  "name": "book-client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

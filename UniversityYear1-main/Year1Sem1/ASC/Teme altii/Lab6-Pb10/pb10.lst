@@ -1,0 +1,44 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14 00000000 221133224433554466-         A dw 1122h, 2233h, 3344h, 4455h, 5566h, 6677h
+    14 00000009 557766             
+    15                                      len equ ($-A)/2
+    16 0000000C 00<rept>                    b1 times len db 0 ; 11 22 33 44 55 66
+    17 00000012 00<rept>                    b2 times len db 0 ; 22 33 44 55 66 77
+    18                                  
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; ...
+    23                                          ; Given an array A of words, build two arrays of bytes:  
+    24                                          ; - array B1 contains as elements the higher part of the words from A
+    25                                          ; - array B2 contains as elements the lower part of the words from A
+    26                                          
+    27 00000000 BE[00000000]                    mov ESI, A; am pus pe A in esi 
+    28 00000005 B906000000                      mov ECX, len ; len of A
+    29 0000000A BF[0C000000]                    mov edi,b1; partea high o sa fie in b1, edi
+    30 0000000F BB[12000000]                    mov ebx,b2; partea low o sa fie in b2, ebx
+    31                                          for1:
+    32                                          
+    33 00000014 66AD                                lodsw; aici punem primul word in ax 
+    34 00000016 8827                                mov [edi], ah ; move the high part into edi 
+    35 00000018 8803                                mov [ebx],al; move the low part  in to ebx;
+    36                                              
+    37 0000001A 47                                  inc edi ; Moving to the next element of B2
+    38 0000001B 43                                  inc ebx ; Moving to the next element of B1
+    39 0000001C E2F6                                loop for1 ; REPEAT LEN TIMES (ECX = ECX - 1 after every iteration)
+    40                                              
+    41                                          ; exit(0)
+    42 0000001E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    43 00000020 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

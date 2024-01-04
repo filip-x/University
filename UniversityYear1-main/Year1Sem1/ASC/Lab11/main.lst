@@ -1,0 +1,67 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  import printf msvcrt.dll
+     5                                  import scanf msvcrt.dll
+     6                                  import exit msvcrt.dll
+     7                                  extern printf
+     8                                  extern scanf, exit
+     9                                  
+    10                                  extern verificare
+    11                                  
+    12                                  segment data use32
+    13                                  	
+    14                                      ; in main we will have the read part and the write part 
+    15                                      ;we will  read from  keyboard words until we have the value 0 inserted 
+    16                                      ; we write "Yes" if all the words have the first word as a subseq and no if not 
+    17 00000000 257300                      format_string db "%s",0 ; this variable is for the format citire
+    18 00000003 437576616E743D00            format_citire db "Cuvant=",0; here print Cuvant for the person so that he can type a word
+    19 0000000B <res 0000000A>              first_var resb 10 ; we restrict the word to 10 characters
+    20 00000015 <res 0000000A>              rest_var resb 10 ; we restrict the others variables to 10 characters 
+    21 0000001F 01000000                    sem dd 1 ; presupunem  ca e corect
+    22 00000023 256400                      format_nr db "%d",0; d  for numbers 
+    23                                      
+    24                                  segment code use32 public code
+    25                                  start:
+    26                                  	
+    27 00000000 68[03000000]                push dword format_citire
+    28 00000005 FF15[00000000]              call [printf]
+    29 0000000B 83C404                      add esp, 4*1
+    30                                      
+    31 0000000E 68[0B000000]                push first_var ; the addres of where the writen word should go
+    32 00000013 68[00000000]                push dword format_string ;the format in which it comes ( here is string %s)
+    33 00000018 FF15[00000000]              call [scanf]
+    34 0000001E 83C408                      add esp,4*2
+    35                                      
+    36                                      repeta: ; we read the the rest of the words and put them in rest_var
+    37                                          
+    38 00000021 68[15000000]                    push rest_var ; the addres of where the writen word should go
+    39 00000026 68[00000000]                    push dword format_string ;the format in which it comes ( here is string %s)
+    40 0000002B FF15[00000000]                  call [scanf]
+    41 00000031 83C408                          add esp,4*2
+    42 00000034 B230                            mov dl,"0"
+    43 00000036 3A15[15000000]                  cmp dl,[rest_var] ; we compare the 0 with the value of rest_var(string  value)
+    44 0000003C 750A                            jne continue ; jne= jump not equel, adica sare la continue daca nu e 0 
+    45 0000003E B200                            mov dl,0
+    46 00000040 3A15[16000000]                  cmp dl,[rest_var+1] ; we compare if the 0 is the only character in the string (0 with no "" it's  Null for \0 - C++)
+    47 00000046 7420                            je end ; je - jump is equel, adica sare la end daca asta e egal cu Null
+    48                                          continue:
+    49 00000048 68[0B000000]                        push first_var; parameters for the verificare function
+    50 0000004D 68[15000000]                        push rest_var; params for the verificare function 
+    51                                              ; pe stiva se pun invers asa ca o sa preluam rest_var primul parametru 
+    52 00000052 E8(00000000)                        call verificare
+    53 00000057 83F800                              cmp eax,0
+    54 0000005A 750A                                jne continue2 ;jump not equal pentru cand e 1 
+    55 0000005C C705[1F000000]0000-                 mov dword [sem],0 ; pentru cand e 0 ca sa il putem schimba
+    55 00000064 0000               
+    56                                          continue2:
+    57 00000066 EBB9                                jmp repeta
+    58                                            
+    59                                      end:
+    60 00000068 FF35[1F000000]              push dword [sem]
+    61 0000006E 68[23000000]                push dword format_nr
+    62 00000073 FF15[00000000]              call [printf]
+    63 00000079 83C408                      add esp, 4*2
+    64                                      
+    65 0000007C 6A00                    	push 0
+    66 0000007E FF15[00000000]          	call [exit]

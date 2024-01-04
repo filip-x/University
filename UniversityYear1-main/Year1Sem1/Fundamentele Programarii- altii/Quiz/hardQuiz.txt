@@ -1,0 +1,6 @@
+2;Which number is the smallest?;-3;3;0;-1;easy
+6;Name the first satellite;Apollo;Sputnik;Zaria;Sputnik;medium
+7;Which apollo mission did not make it to the moon?;11;13;17;13;hard
+8;A mole can be;animal;quantity;both;both;hard
+9;Name El Cid's horse;Babieca;Abu;Santiago;Babieca;hard
+12;bla bla;bla1;bla2;bla3;bla2;hard

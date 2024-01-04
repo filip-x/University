@@ -1,0 +1,5 @@
+Mini | Coup | 2001 | Red
+Audi | A | 2003 | Blue
+BMW | B | 2010 | Green
+Golf | C | 2007 | Yellow
+Mercedes | SUV | 2002 | Black
